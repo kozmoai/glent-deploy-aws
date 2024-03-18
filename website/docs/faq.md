@@ -8,7 +8,7 @@ toc_max_heading_level: 4
 
 #### What is GLENT on AWS?
 > 
-> Orchestrate Platforms and Applications (GLENT) on AWS is an open source reference implementation that ties together AWS services into an enterprise ready solution. By abstracting AWS services, GLENT on AWS allows application developers to focus on what they do best – writing application logic code, all while allowing platform engineering teams to enforce internal guardrails and best practices at scale. GLENT on AWS provides a productive and efficient experience for non-cloud developers and allows for integrations with your current tooling. It is fast, safe, fun, and at-scale.
+> Orchestrate Platforms and Applications (GLENT) on AWS is a reference implementation that ties together AWS services into an enterprise ready solution. By abstracting AWS services, GLENT on AWS allows application developers to focus on what they do best – writing application logic code, all while allowing platform engineering teams to enforce internal guardrails and best practices at scale. GLENT on AWS provides a productive and efficient experience for non-cloud developers and allows for integrations with your current tooling. It is fast, safe, fun, and at-scale.
 <br/>
 
 #### What does GLENT on AWS do?

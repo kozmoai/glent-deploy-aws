@@ -20,8 +20,8 @@ function HomepageHeader() {
         </div> */}
       <Grid container spacing={3} className="perspective-container">
         <Grid item xs={6} className="hero hero--primary bgimg logoWrapper">
-          <span className='logoText1'>Orchestrate Platforms <br/>and Applications</span>
-          <span className='logoText2'>on AWS</span>
+          {/*<span className='logoText1'>Orchestrate Platforms <br/>and Applications</span>*/}
+          {/*<span className='logoText2'>on AWS</span>*/}
         </Grid>
         <Grid className='tagWrapper' item xs={5}>
           <Grid container direction="column" spacing={2} style={{display: 'flex'}}>

@@ -74,7 +74,7 @@ const glentDescription : FeatureItem[] = [
     customTextStyle:{fontSize:'24px', textAlign:'left', maxWidth:'65%', margin:'auto', minHeight:'275px'},
     description: (
       <>
-       <b>Orchestrate Platforms and Applications (GLENT) on AWS </b>is an open source reference implementation that ties together AWS services into an enterprise-ready offering. By abstracting AWS services, GLENT on AWS allows application developers to focus on what they do best – write application logic! <br/> <br/> Platform engineering teams can promote best practices at-scale, while providing a productive and pleasurable experience for non-cloud developers
+       <b>Orchestrate Platforms and Applications on AWS </b>is a reference implementation that ties together AWS services into an enterprise-ready offering. By abstracting AWS services, GLENT on AWS allows application developers to focus on what they do best – write application logic! <br/> <br/> Platform engineering teams can promote best practices at-scale, while providing a productive and pleasurable experience for non-cloud developers
       </>
     ),
   },
