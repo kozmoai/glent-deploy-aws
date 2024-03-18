@@ -1,0 +1,13 @@
+{
+    "private": true,
+    "name": "aws-application-development",
+    "workspaces": [
+        "glent-basic-environment",
+        "glent-ecs-environment",
+        "glent-ecs-ec2-environment",
+        "glent-eks-environment",
+        "glent-serverless-environment",
+        "glent-common-constructs",
+        "glent-platform"
+    ]
+}
