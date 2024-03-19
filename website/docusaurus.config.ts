@@ -112,7 +112,7 @@ const config: Config = {
     },
     announcementBar: {
       content:
-      'GLENT on AWS 0.3 is now available.  Check it out and give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/kozmoai/kozmo-deploy-aws">GitHub</a>! ⭐️.  View changes <a target="_blank" rel="noopener noreferrer" href="https://glentonaws.io/docs/CHANGELOG">here</a>.',
+      'GLENT on AWS 0.3 is now available.  Check it out and give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/kozmoai/kozmo-deploy-aws">GitHub</a>! ⭐️.  ',
       backgroundColor: '#ffffff',
       textColor: '#000000',
       isCloseable: true,

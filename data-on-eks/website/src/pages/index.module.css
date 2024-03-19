@@ -1,0 +1,40 @@
+/* Update the heroBanner class */
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+/* Add styles for logo image */
+.logoImage {
+  width: 60%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Apply zoom effect on hovering the logo image */
+.logoImage:hover {
+  transform: scale(1.1); /* Increase size on hover */
+}
+
+/* Rest of your existing CSS remains unchanged */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  font-weight: bold;
+}
+
+.main {
+  padding: 10px;
+}
