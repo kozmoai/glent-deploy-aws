@@ -1,10 +1,10 @@
 <!-- 
-Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: Apache-2.0 
 -->
-# GLENT on AWS Backend
+# OPA on AWS Backend
 
-This is the backend part of the GLENT on AWS plugin.  Its key responsibilities:
+This is the backend part of the OPA on AWS plugin.  Its key responsibilities:
 
 1. **Catalog contributions** - the plugin provides the AWSEnvironment and AWSEnvironmentProvider entity Kinds, including processing and validation of the entities.
 2. **Authentication / Authorization** - the plugin assumes defined roles with permisisons for provisioning infrastructure resources for a target environment account.
@@ -24,7 +24,7 @@ Setup for the AWS Apps backend requires a router for Backstage, making the catal
 
 ### Configure a router
 
-Create a `awsApps.ts` file in the `packages/backend/src/plugins/`directory.  This file creates a router for the GLENT on AWS backend.
+Create a `awsApps.ts` file in the `packages/backend/src/plugins/`directory.  This file creates a router for the OPA on AWS backend.
 
 ```ts
 // packages/backend/src/plugins/awsApps.ts
@@ -114,13 +114,13 @@ export default async function createPlugin(
 
 ### Permission Framework Policy
 
-The GLENT on AWS backend plugin leverages the [Backstage permissions framework](https://backstage.io/docs/permissions/overview) to contribute a permission decision for access to audit entries.  If you would like to implement a policy for your Backstage instance to control access to audit entries you will start with the [Permission framework getting started documentation](https://backstage.io/docs/permissions/getting-started) to set up the base framework.  
-With the framework in place, you can leverage the `readGlentAppAuditPermission` permission in your policy definition to restrict access to audit entries.
+The OPA on AWS backend plugin leverages the [Backstage permissions framework](https://backstage.io/docs/permissions/overview) to contribute a permission decision for access to audit entries.  If you would like to implement a policy for your Backstage instance to control access to audit entries you will start with the [Permission framework getting started documentation](https://backstage.io/docs/permissions/getting-started) to set up the base framework.  
+With the framework in place, you can leverage the `readOpaAppAuditPermission` permission in your policy definition to restrict access to audit entries.
 
 ```ts
 // Example of policy decision in a policy
 
-import { readGlentAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';
+import { readOpaAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';
 ...
 
 export class permissionPolicy implements PermissionPolicy {
@@ -133,7 +133,7 @@ export class permissionPolicy implements PermissionPolicy {
     const VILLIANS_GROUP = stringifyEntityRef({ kind: 'Group', namespace: DEFAULT_NAMESPACE, name: "villians" });
     const ownershipGroups = user?.identity.ownershipEntityRefs || [];
     if (
-      isPermission(request.permission, readGlentAppAuditPermission) && 
+      isPermission(request.permission, readOpaAppAuditPermission) && 
       ownershipGroups.length === 1 && 
       ownershipGroups.includes(VILLIANS_GROUP)
     ) {

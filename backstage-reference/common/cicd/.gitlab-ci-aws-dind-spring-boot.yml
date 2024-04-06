@@ -19,7 +19,7 @@
     - export AWS_SECRET_ACCESS_KEY=$(echo ${ROLE_OUTPUT} | jq -r '.Credentials.SecretAccessKey')
     - export AWS_SESSION_TOKEN=$(echo ${ROLE_OUTPUT} | jq -r '.Credentials.SessionToken')
     - aws sts get-caller-identity
-    - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $GLENT_CI_REGISTRY
+    - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $OPA_CI_REGISTRY
     - echo Successfully logged in to ECR!
     - apk add curl
     - apk add tar
@@ -32,7 +32,7 @@
     - mvn spring-boot:build-image -Dspring-boot.build-image.imageName=$APP_SHORT_NAME:${CI_COMMIT_SHORT_SHA}
     # - pack build $APP_SHORT_NAME -t $APP_SHORT_NAME:$TAG --builder paketobuildpacks/builder:base
     # - docker build -t $APP_SHORT_NAME:${CI_COMMIT_SHORT_SHA} .
-    - LC_TAG=`echo "${GLENT_CI_REGISTRY_IMAGE}" | tr '[:upper:]' '[:lower:]'`
+    - LC_TAG=`echo "${OPA_CI_REGISTRY_IMAGE}" | tr '[:upper:]' '[:lower:]'`
     - docker tag $APP_SHORT_NAME:${CI_COMMIT_SHORT_SHA} $LC_TAG:${CI_COMMIT_SHORT_SHA}
     - docker tag $APP_SHORT_NAME:${CI_COMMIT_SHORT_SHA} $LC_TAG:latest
     - echo Pushing Docker image to ECR...

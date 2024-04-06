@@ -1,5 +1,5 @@
 <!-- 
-Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: Apache-2.0 
 -->
 # AWS Apps Demo
@@ -26,7 +26,7 @@ yarn add --cwd packages/app @aws/plugin-aws-apps-demo-for-backstage@0.2.0
 
 ```diff
 // packages/app/src/App.tsx
-+ import { GLENTHomePage, customerTheme } from '@aws/plugin-aws-apps-demo-for-backstage';
++ import { OPAHomePage, customerTheme } from '@aws/plugin-aws-apps-demo-for-backstage';
 + import { darkTheme, lightTheme } from '@backstage/theme';
 
   
@@ -72,7 +72,7 @@ yarn add --cwd packages/app @aws/plugin-aws-apps-demo-for-backstage@0.2.0
     <FlatRoutes>
 -     <Route path="/" element={<Navigate to="catalog" />} />
 +     <Route path="/" element={<Navigate to="home" />} />
-+     <Route path="/home" element={ <GLENTHomePage /> } />
++     <Route path="/home" element={ <OPAHomePage /> } />
       ...
     </FlatRoutes>
   );
@@ -156,7 +156,7 @@ backend:
 
 ## Next Steps
 
-The home page provided in this plugin is a simple demonstration page.  You can modify the `GLENTHomePage.tsx` content to meet your needs.  See the Backstage documentation for home page setup and customization for more details on how you can customize your experience: https://backstage.io/docs/getting-started/homepage
+The home page provided in this plugin is a simple demonstration page.  You can modify the `OPAHomePage.tsx` content to meet your needs.  See the Backstage documentation for home page setup and customization for more details on how you can customize your experience: https://backstage.io/docs/getting-started/homepage
 
 <!-- link definitions -->
 [homepageImage]: docs/images/homePage.png 'AWS Apps Demo Home page'

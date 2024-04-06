@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 # This script has functions to empty S3 buckets for the application
 

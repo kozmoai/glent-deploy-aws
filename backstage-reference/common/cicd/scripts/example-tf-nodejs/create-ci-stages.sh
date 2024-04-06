@@ -41,7 +41,7 @@ do
     # create a 6 char uniq identifier to append to the bucket name
     UNIQ_ID=$(LC_ALL=C tr -dc a-f0-9 </dev/urandom | head -c 6)
     # Ensure that the bucket name is unique across all environments and 63 characters or less
-    STATE_BUCKET_NAME="glent-tf-state-${ENV_IDENTIFIER:0:42}-${UNIQ_ID}"
+    STATE_BUCKET_NAME="opa-tf-state-${ENV_IDENTIFIER:0:42}-${UNIQ_ID}"
     echo "STATE_BUCKET_NAME for $TARGET_ENV_PROVIDER_NAME is $STATE_BUCKET_NAME"
     echo "s3 bucket will be created in the $REGION region"
     aws s3api head-bucket --bucket $STATE_BUCKET_NAME || BUCKET_NOT_EXIST=true
@@ -91,25 +91,25 @@ do
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /generate CICD stages/\"" >> $STAGE_FILE_PATH
     echo "      when: never" >> $STAGE_FILE_PATH
     echo "    - if: \"\$CI_COMMIT_BRANCH == '$CI_DEFAULT_BRANCH'\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "      changes:" >> $STAGE_FILE_PATH
     echo "      - .iac/**/*" >> $STAGE_FILE_PATH
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /Added CICD environment stage ${TARGET_ENV_NAME}/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /^Bind Resource to env ${TARGET_ENV_NAME}-${TARGET_ENV_PROVIDER_NAME}/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /^unBind Resource to env ${TARGET_ENV_NAME}-${TARGET_ENV_PROVIDER_NAME}/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /Added multiple environment stages/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "  stage: prepare-${TARGET_ENV_NAME}-stage" >> $STAGE_FILE_PATH
@@ -119,7 +119,7 @@ do
     echo ""  >> $STAGE_FILE_PATH
     
     echo "get-aws-creds-${TARGET_ENV_NAME}-${TARGET_ENV_PROVIDER_NAME}:" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "  extends: .abstract-get-aws-creds-manual" >> $STAGE_FILE_PATH
     else
         echo "  extends: .abstract-get-aws-creds-auto" >> $STAGE_FILE_PATH

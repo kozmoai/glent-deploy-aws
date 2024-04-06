@@ -4,7 +4,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 @@ -1,9 +1,11 @@
  app:
 -  title: Scaffolded Backstage App
-+  title: GLENT
++  title: OPA
    baseUrl: http://localhost:3000
 +  logo: ${CUSTOMER_LOGO}
 +  logoIcon: ${CUSTOMER_LOGO_ICON}
@@ -174,7 +174,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +        # userFilter: profile.department eq "engineering"
 +        # groupFilter: profile.name eq "Developers"
 +    gitlab:
-+      glent:
++      opa:
 +        host: ${SSM_GITLAB_HOSTNAME}
 +        branch: main
 +        fallbackBranch: main
@@ -225,7 +225,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
  import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 +import { AppCatalogPage } from '@aws/plugin-aws-apps-for-backstage';
 +import { oktaAuthApiRef } from '@backstage/core-plugin-api';
-+import { GLENTHomePage, customerTheme, awsTheme, glentTheme } from '@aws/plugin-aws-apps-demo-for-backstage';
++import { OPAHomePage, customerTheme, awsTheme, opaTheme } from '@aws/plugin-aws-apps-demo-for-backstage';
 +import { darkTheme, lightTheme } from '@backstage/theme';
 +import { CssBaseline, ThemeProvider } from '@material-ui/core';
  
@@ -298,11 +298,11 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +      ),
 +    },
 +    {
-+      id: 'glentTheme',
-+      title: 'GLENT',
++      id: 'opaTheme',
++      title: 'OPA',
 +      variant: 'light',
 +      Provider: ({ children }) => (
-+        <ThemeProvider theme={glentTheme}>
++        <ThemeProvider theme={opaTheme}>
 +          <CssBaseline>{children}</CssBaseline>
 +        </ThemeProvider>
 +      ),
@@ -314,7 +314,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
    <FlatRoutes>
 -    <Route path="/" element={<Navigate to="catalog" />} />
 +    <Route path="/" element={<Navigate to="home" />} />
-+    <Route path="/home" element={<GLENTHomePage />} />
++    <Route path="/home" element={<OPAHomePage />} />
      <Route path="/catalog" element={<CatalogIndexPage />} />
      <Route
        path="/catalog/:namespace/:kind/:name"
@@ -421,7 +421,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
  
 +function getLogo(themeId: string) {
 +  switch (themeId) {
-+    case 'glentTheme':
++    case 'opaTheme':
 +      return [<AWSLogoFull />, <AWSLogoIcon />];
 +    case 'customerTheme':
 +      return [<CustomerLogoFullLight />, <CustomerLogoIcon />];
@@ -679,11 +679,11 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
  
    // Add backends ABOVE this line; this 404 handler is the catch-all fallback
    apiRouter.use(notFoundHandler());
-diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --exclude=yarn.lock --exclude=app-config.local.yaml --exclude=.git --exclude=dist-types --exclude=.env --exclude=*.d.ts --exclude=dist --exclude=.DS_Store backstage_0.5.8/packages/backend/src/plugins/GlentSamplePermissionPolicy.ts backstage/packages/backend/src/plugins/GlentSamplePermissionPolicy.ts
---- backstage_0.5.8/packages/backend/src/plugins/GlentSamplePermissionPolicy.ts	1969-12-31 19:00:00
-+++ backstage/packages/backend/src/plugins/GlentSamplePermissionPolicy.ts	2024-02-26 16:27:58
+diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --exclude=yarn.lock --exclude=app-config.local.yaml --exclude=.git --exclude=dist-types --exclude=.env --exclude=*.d.ts --exclude=dist --exclude=.DS_Store backstage_0.5.8/packages/backend/src/plugins/OpaSamplePermissionPolicy.ts backstage/packages/backend/src/plugins/OpaSamplePermissionPolicy.ts
+--- backstage_0.5.8/packages/backend/src/plugins/OpaSamplePermissionPolicy.ts	1969-12-31 19:00:00
++++ backstage/packages/backend/src/plugins/OpaSamplePermissionPolicy.ts	2024-02-26 16:27:58
 @@ -0,0 +1,94 @@
-+import { readGlentAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';
++import { readOpaAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';
 +import { DEFAULT_NAMESPACE, stringifyEntityRef } from '@backstage/catalog-model';
 +import { BackstageIdentityResponse } from '@backstage/plugin-auth-node';
 +import { catalogConditions, createCatalogConditionalDecision } from '@backstage/plugin-catalog-backend/alpha';
@@ -700,7 +700,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +const DEVELOPERS_GROUP = stringifyEntityRef({ kind: 'Group', namespace: DEFAULT_NAMESPACE, name: "developers" });
 +// const EVERYONE_GROUP = stringifyEntityRef({ kind: 'Group', namespace: DEFAULT_NAMESPACE, name: "everyone" });
 +
-+export class GlentSampleAllowAllPolicy implements PermissionPolicy {
++export class OpaSampleAllowAllPolicy implements PermissionPolicy {
 +
 +  async handle(): Promise<PolicyDecision> {
 +    return { result: AuthorizeResult.ALLOW };
@@ -710,7 +710,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +
 +
 +
-+export class GlentSamplePermissionPolicy implements PermissionPolicy {
++export class OpaSamplePermissionPolicy implements PermissionPolicy {
 +
 +  async handle(
 +    request: PolicyQuery, 
@@ -734,7 +734,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +    //   DENY audit read access unless the user is a member of Admin or DevOps
 +    //   The implementation below assumes that prior checks have returned an
 +    //   'allow' policy decision for groups other than 'developer'
-+    if (isPermission(request.permission, readGlentAppAuditPermission) && ownershipGroups.includes(DEVELOPERS_GROUP)) {
++    if (isPermission(request.permission, readOpaAppAuditPermission) && ownershipGroups.includes(DEVELOPERS_GROUP)) {
 +      return { result: AuthorizeResult.DENY };
 +    }
 +
@@ -897,7 +897,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +import { createRouter } from '@backstage/plugin-permission-backend';
 +import { Router } from 'express';
 +import { PluginEnvironment } from '../types';
-+import { GlentSampleAllowAllPolicy, /* GlentSamplePermissionPolicy */ } from './GlentSamplePermissionPolicy';
++import { OpaSampleAllowAllPolicy, /* OpaSamplePermissionPolicy */ } from './OpaSamplePermissionPolicy';
 +
 +
 +export default async function createPlugin(env: PluginEnvironment): Promise<Router> {
@@ -905,7 +905,7 @@ diff -Naur --exclude=node_modules --exclude=*aws-apps* --exclude=package.json --
 +    config: env.config,
 +    logger: env.logger,
 +    discovery: env.discovery,
-+    policy: new GlentSampleAllowAllPolicy(),
++    policy: new OpaSampleAllowAllPolicy(),
 +    identity: env.identity,
 +  });
 +}

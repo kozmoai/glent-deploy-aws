@@ -1,10 +1,10 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import {
   AppPromoParams,
   BindResourceParams,
-  readGlentAppAuditPermission,
+  readOpaAppAuditPermission,
 } from '@aws/plugin-aws-apps-common-for-backstage';
 import { NotAllowedError } from '@backstage/errors';
 import { IdentityApi, getBearerTokenFromAuthorizationHeader } from '@backstage/plugin-auth-node';
@@ -31,7 +31,7 @@ export async function createRouter(options: RouterOptions): Promise<express.Rout
   const { logger, userIdentity, config, permissions } = options;
 
   const permissionIntegrationRouter = createPermissionIntegrationRouter({
-    permissions: [readGlentAppAuditPermission]
+    permissions: [readOpaAppAuditPermission]
   });
 
   const router = Router();
@@ -586,7 +586,7 @@ export async function createRouter(options: RouterOptions): Promise<express.Rout
     // get a permission decision
     const decision = (
       await permissions.authorize([{
-        permission: readGlentAppAuditPermission
+        permission: readOpaAppAuditPermission
       }], {
         token
       })

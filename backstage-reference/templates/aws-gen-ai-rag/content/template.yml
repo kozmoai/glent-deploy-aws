@@ -439,59 +439,59 @@ Resources:
   TemperatureParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/temperature
+      Name: !Sub /opa/gen-ai/${AppName}/temperature
       Type: String
       Value: "1"
-      Description: Parameter for GLENT Gen AI Temperature
+      Description: Parameter for OPA Gen AI Temperature
   ClassificationPromptParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/classification_prompt
+      Name: !Sub /opa/gen-ai/${AppName}/classification_prompt
       Type: String
       Value: "Human: We want to detect which company is related to the following question \"{question}\". the list of possible topics names are {topics}. if no one is related, answer none. Provide the response following the JSON format as above example: {string} Assistant:"
-      Description: Parameter for GLENT Gen AI Classification Prompt
+      Description: Parameter for OPA Gen AI Classification Prompt
   ResponsePromptParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/response_prompt
+      Name: !Sub /opa/gen-ai/${AppName}/response_prompt
       Type: String
       Value: "Use the following documents to answer the following \"{question}\". Here are the documents, between <document></document> XML tags:{documents} Do not directly mention the content of the documents if not relevant to the question. Ensure that your answer is accurate and uses the information from the documents previously provided."
-      Description: Parameter for GLENT Gen AI Response Prompt
+      Description: Parameter for OPA Gen AI Response Prompt
   TopicsParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/topics
+      Name: !Sub /opa/gen-ai/${AppName}/topics
       Type: String
       Value: "[]"
-      Description: Parameter for GLENT Gen AI Topics
+      Description: Parameter for OPA Gen AI Topics
   MaxTokensParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/max_tokens_to_sample
+      Name: !Sub /opa/gen-ai/${AppName}/max_tokens_to_sample
       Type: String
       Value: "400"
-      Description: Parameter for GLENT Gen AI Max Tokens to Sample
+      Description: Parameter for OPA Gen AI Max Tokens to Sample
   RelevantDocsCountParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/relevant_documents_count
+      Name: !Sub /opa/gen-ai/${AppName}/relevant_documents_count
       Type: String
       Value: "3"
-      Description: Parameter for GLENT Gen AI Relevant Documents Count
+      Description: Parameter for OPA Gen AI Relevant Documents Count
   ChunkSizeParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/chunk_size
+      Name: !Sub /opa/gen-ai/${AppName}/chunk_size
       Type: String
       Value: "28000"
-      Description: Parameter for GLENT Gen AI Chunk Size
+      Description: Parameter for OPA Gen AI Chunk Size
   ChunkOverlapParameter:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Sub /glent/gen-ai/${AppName}/chunk_overlap
+      Name: !Sub /opa/gen-ai/${AppName}/chunk_overlap
       Type: String
       Value: "0"
-      Description: Parameter for GLENT Gen AI Chunk Overlap
+      Description: Parameter for OPA Gen AI Chunk Overlap
 
 Outputs:
   ApiGatewayEndpoint:

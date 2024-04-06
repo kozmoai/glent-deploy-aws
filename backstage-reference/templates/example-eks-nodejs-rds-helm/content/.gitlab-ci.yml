@@ -6,10 +6,10 @@ stages:
 variables:
   APP_SHORT_NAME: "${{ values.component_id }}"
   APP_TEMPLATE_NAME: "example-eks-nodejs-rds"
-  GLENT_PLATFORM_REGION: "${{ values.platformRegion }}"
+  OPA_PLATFORM_REGION: "${{ values.platformRegion }}"
 
 include:
-  - project: 'glent-admin/backstage-reference'
+  - project: 'opa-admin/backstage-reference'
     ref: main 
     file:
       - 'common/cicd/.gitlab-ci-job-defaults-cdk.yml'

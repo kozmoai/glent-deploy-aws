@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 export FUNCTION_NAME=${TARGET_KUBECTL_LAMBDA_ARN##*:}
 

@@ -50,7 +50,7 @@ This command will deploy the pre-requisite stack which will create the following
 You will need to manually [create a hosted zone using **Amazon Route 53**](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html) and update the domain in the config.yaml.
 
 5. Update the Okta secret
-You will need to update your Okta secrets in **Secrets Manager** with 3rd party Okta credentials and API tokens. Go to the AWS Console -> Secrets Manager-> locate Okta secret -> edit and update the preconfigured keys. Configuration is based on the usage of the RoadieHQ Okta module.  See the [documentation for the @roadiehq/catalog-backend-module-okta plugin](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/backend/catalog-backend-module-okta) for details about the plugin.
+You will need to update your Okta secrets in **Secrets Manager** with 3rd party Okta credentials and API tokens. Go to the AWS Console -> Secrets Manager-> locate Okta secret -> edit and update the preconfigured keys. Configuration is based on the usage of the kozmoai Okta module.  See the [documentation for the @kozmoai/catalog-backend-module-okta plugin](https://github.com/kozmoai/roadie-backstage-plugins/tree/main/plugins/backend/catalog-backend-module-okta) for details about the plugin.
 
 ![DeploymentArchitecture.png](../docs/images/DeploymentArchitecture.png)
 

@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { CatalogApi } from '@backstage/catalog-client';
@@ -10,7 +10,7 @@ import { getAWScreds } from '@aws/plugin-aws-apps-backend-for-backstage';
 import { getSSMParameterValue } from '../../helpers/action-context';
 import { EnvironmentProvider } from '../../types';
 
-const ID = 'glent:get-env-providers';
+const ID = 'opa:get-env-providers';
 
 const examples = [
   {
@@ -19,7 +19,7 @@ const examples = [
       steps: [
         {
           action: ID,
-          id: 'glentGetAwsEnvProviders',
+          id: 'opaGetAwsEnvProviders',
           name: 'Get AWS Environment Providers',
           input: {
             environmentRef: 'awsenvironment:Test-Environment',

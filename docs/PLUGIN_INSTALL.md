@@ -23,8 +23,8 @@ cp -R ./backstage-plugins/ ./backstage
 
 From the `backstage` folder, install Backstage plugins:
 ```sh
-# Install the Okta plugin from RoadieHQ
-yarn --cwd packages/backend add "@roadiehq/catalog-backend-module-okta"
+# Install the Okta plugin from kozmoai
+yarn --cwd packages/backend add "@kozmoai/catalog-backend-module-okta"
 
 # Install the Gitlab plugin from ImmobiliareLabs
 yarn --cwd packages/backend add "@immobiliarelabs/backstage-plugin-gitlab-backend"
@@ -42,7 +42,7 @@ yarn --cwd packages/app add "@aws/plugin-aws-apps-demo-for-backstage@^0.2.0"
 
 Configure Backstage to use the plugins:
 
-- For more information regarding Okta plugin visit RoadieHQ Okta plugin, see [RoadieHQ documentation](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/backend/catalog-backend-module-okta).
+- For more information regarding Okta plugin visit kozmoai Okta plugin, see [kozmoai documentation](https://github.com/kozmoai/roadie-backstage-plugins/tree/main/plugins/backend/catalog-backend-module-okta).
 - For more information regarding ImmobiliareLabs GitLab plugins, see [ImmobiliareLabs documentation](https://github.com/immobiliare/backstage-plugin-gitlab).
 - See the README.md documentation for each of the AWS plugins:
   - [AWS apps backend plugin](/backstage/plugins/aws-apps-backend/README.md)
@@ -53,7 +53,7 @@ Configure Backstage to use the plugins:
 1. Edit the file `backstage/packages/backend/src/plugins/catalog.ts` with the below modifications:
 ```diff
 //Add these imports
-+ import { OktaOrgEntityProvider } from '@roadiehq/catalog-backend-module-okta';
++ import { OktaOrgEntityProvider } from '@kozmoai/catalog-backend-module-okta';
 + import { GitlabFillerProcessor } from '@immobiliarelabs/backstage-plugin-gitlab-backend';
 + import { AWSEnvironmentEntitiesProcessor, AWSEnvironmentProviderEntitiesProcessor} from '@aws/plugin-aws-apps-backend-for-backstage';
 

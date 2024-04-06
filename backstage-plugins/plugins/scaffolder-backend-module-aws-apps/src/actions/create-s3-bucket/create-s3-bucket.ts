@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
@@ -11,7 +11,7 @@ export function createS3BucketAction() {
     envProviders: EnvironmentProvider[];
     tags?: { Key: string, Value: string | number | boolean }[];
   }>({
-    id: 'glent:create-s3-bucket',
+    id: 'opa:create-s3-bucket',
     description: 'Creates an S3 bucket',
     schema: {
       input: {

@@ -1,11 +1,11 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useEffect, useState } from 'react';
 import { CodeSnippet, InfoCard, EmptyState } from '@backstage/core-components';
 import { LinearProgress } from '@material-ui/core';
 import { useApi } from '@backstage/core-plugin-api';
-import { GLENTApi, glentApiRef } from '../../api';
+import { OPAApi, opaApiRef } from '../../api';
 import { Typography, CardContent, IconButton, Grid } from '@mui/material';
 import { GetSecretValueCommandOutput } from '@aws-sdk/client-secrets-manager';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -14,9 +14,9 @@ import { useAsyncAwsApp } from '../../hooks/useAwsApp';
 import { AWSECSAppDeploymentEnvironment } from '@aws/plugin-aws-apps-common-for-backstage';
 import { useEntity } from '@backstage/plugin-catalog-react';
 
-const GlentAppGeneralInfo = ({
+const OpaAppGeneralInfo = ({
   input: { gitHostUrl, gitApp, repoSecretArn, api, appPending }
-}: { input: { account: string, region: string, gitHostUrl: string, gitApp: string, repoSecretArn: string, api: GLENTApi, appPending: boolean } }) => {
+}: { input: { account: string, region: string, gitHostUrl: string, gitApp: string, repoSecretArn: string, api: OPAApi, appPending: boolean } }) => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<{ isError: boolean; errorMsg: string | null }>({ isError: false, errorMsg: null });
@@ -55,7 +55,7 @@ const GlentAppGeneralInfo = ({
 
     setSecretData(secrets);
 
-    const gitHostParam = await api.getPlatformSSMParam({ paramName: "/glent/gitlab-hostname" });
+    const gitHostParam = await api.getPlatformSSMParam({ paramName: "/opa/gitlab-hostname" });
     setGitHost(gitHostParam.Parameter?.Value?.toString() || "");
   }
 
@@ -125,7 +125,7 @@ const GlentAppGeneralInfo = ({
 };
 
 export const GeneralInfoCard = ({ appPending }: { appPending: boolean }) => {
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
   const { entity } = useEntity();
   const awsAppLoadingStatus = useAsyncAwsApp();
   if (appPending) {
@@ -138,7 +138,7 @@ export const GeneralInfoCard = ({ appPending }: { appPending: boolean }) => {
       api,
       appPending
     };
-    return <GlentAppGeneralInfo input={input} />;
+    return <OpaAppGeneralInfo input={input} />;
   }
   else {
     if (awsAppLoadingStatus.loading) {
@@ -156,7 +156,7 @@ export const GeneralInfoCard = ({ appPending }: { appPending: boolean }) => {
         api,
         appPending
       };
-      return <GlentAppGeneralInfo input={input} />;
+      return <OpaAppGeneralInfo input={input} />;
     } else {
       return <EmptyState missing="data" title="No info data to show" description="Info data would show here" />;
     }

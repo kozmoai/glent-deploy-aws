@@ -2,7 +2,7 @@
 
 scriptDir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 iacDir=${scriptDir}/../iac/roots
-glentPlatformDir=${iacDir}/glent-platform
+opaPlatformDir=${iacDir}/opa-platform
 configDir=${scriptDir}/../config
 
 source ${scriptDir}/helpers.sh
@@ -21,7 +21,7 @@ if [[ -z $AWS_DEFAULT_REGION ]]; then
   aws_region AWS_DEFAULT_REGION "Enter the AWS region to bootstrap for CDK usage:" "$defaultRegion"
 fi
 
-cd $glentPlatformDir
+cd $opaPlatformDir
 confirm_aws_account
 cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_DEFAULT_REGION
 cd -

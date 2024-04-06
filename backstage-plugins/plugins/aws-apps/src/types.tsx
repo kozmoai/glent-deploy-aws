@@ -1,9 +1,9 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { KeyValuePair } from '@aws-sdk/client-ecs';
 
-export interface GLENTAppData {
+export interface OPAAppData {
   [key: string]: any;
 }
 

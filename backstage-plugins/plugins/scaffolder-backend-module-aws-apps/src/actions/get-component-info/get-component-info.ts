@@ -1,11 +1,11 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
 import { kebabCase } from 'lodash';
 import yaml from 'yaml';
 
-const ID = 'glent:get-component-info';
+const ID = 'opa:get-component-info';
 
 const examples = [
   {

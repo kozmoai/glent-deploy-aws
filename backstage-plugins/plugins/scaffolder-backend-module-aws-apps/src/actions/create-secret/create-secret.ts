@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
@@ -13,7 +13,7 @@ export function createSecretAction(options: { envConfig: Config }) {
     region?: string;
     tags?: { Key: string, Value: string | number | boolean }[];
   }>({
-    id: 'glent:create-secret',
+    id: 'opa:create-secret',
     description: 'Creates secret in Secret Manager',
     schema: {
       input: {

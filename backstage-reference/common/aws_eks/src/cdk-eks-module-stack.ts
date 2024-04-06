@@ -21,7 +21,7 @@ import {
   getRegion,
   getResourceTags,
   validateEKSStackRequiredEnvVars,
-  GLENTEnvironmentParams
+  OPAEnvironmentParams
 } from "./eks-input";
 
 interface PermissionList {
@@ -53,15 +53,15 @@ export class EksResourcesStack extends Stack {
     const awsRegion = getRegion();
     const awsAccount = getAccountId();
 
-    const glentEnvParams: GLENTEnvironmentParams = {
+    const opaEnvParams: OPAEnvironmentParams = {
       envName,
       awsRegion,
       awsAccount,
       prefix
     }
 
-    const envIdentifier = `${glentEnvParams.prefix.toLowerCase()}-${glentEnvParams.envName}`;
-    const envPathIdentifier = `/${glentEnvParams.prefix.toLowerCase()}/${glentEnvParams.envName.toLowerCase()}`;
+    const envIdentifier = `${opaEnvParams.prefix.toLowerCase()}-${opaEnvParams.envName}`;
+    const envPathIdentifier = `/${opaEnvParams.prefix.toLowerCase()}/${opaEnvParams.envName.toLowerCase()}`;
     const appAdminRoleArn = getAppAdminRoleArn();
     const k8sIamRoleBindingType = getK8sIamRoleBindingType();
     const appShortName = "${{ values.component_id }}";
@@ -137,7 +137,7 @@ export class EksResourcesStack extends Stack {
       appAdminRole = new EKSAppAdminRoleConstruct(this,
         `${appShortName}-admin-role`,
         {
-          glentEnv: glentEnvParams,
+          opaEnv: opaEnvParams,
           eksClusterName: clusterName
         }
       ).iamRole;

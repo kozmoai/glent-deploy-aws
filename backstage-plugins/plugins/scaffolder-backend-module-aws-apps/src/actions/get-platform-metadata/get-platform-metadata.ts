@@ -1,20 +1,20 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { Config } from '@backstage/config';
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
 import yaml from 'yaml';
 
-const ID = 'glent:get-platform-metadata';
+const ID = 'opa:get-platform-metadata';
 
 const examples = [
   {
-    description: 'Retrieve data about the GLENT on AWS platform',
+    description: 'Retrieve data about the OPA on AWS platform',
     example: yaml.stringify({
       steps: [
         {
           action: ID,
-          id: 'glentGetPlatformMetadata',
+          id: 'opaGetPlatformMetadata',
           name: 'Get platform information',
         },
       ],
@@ -27,7 +27,7 @@ export function getPlatformMetadataAction(options: { envConfig: Config }) {
 
   return createTemplateAction({
     id: ID,
-    description: 'Retrieve data about the GLENT on AWS platform',
+    description: 'Retrieve data about the OPA on AWS platform',
     examples,
     schema: {
       output: {
@@ -37,7 +37,7 @@ export function getPlatformMetadataAction(options: { envConfig: Config }) {
         ],
         properties: {
           platformRegion: {
-            title: 'The AWS region where the GLENT on AWS solution is deployed',
+            title: 'The AWS region where the OPA on AWS solution is deployed',
             type: 'string'
           }
         }

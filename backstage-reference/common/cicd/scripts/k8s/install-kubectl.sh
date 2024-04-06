@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 echo -e "\e[0Ksection_start:`date +%s`:install_kubectl[collapsed=true]\r\e[0KInstalling kubectl";
 curl -LO https://dl.k8s.io/release/v1.28.4/bin/linux/amd64/kubectl;

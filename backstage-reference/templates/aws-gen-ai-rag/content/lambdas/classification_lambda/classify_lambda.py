@@ -17,7 +17,7 @@ ssm = boto3.client('ssm')
 app_name = os.environ["APP_NAME"]
 
 for param in params_to_retrieve:
-    param_name = f'/glent/gen-ai/{app_name}/{param}'
+    param_name = f'/opa/gen-ai/{app_name}/{param}'
     ssm_prompt_response = ssm.get_parameter(Name=param_name)
     param_value = ssm_prompt_response['Parameter']['Value']
     param_values[param] = param_value

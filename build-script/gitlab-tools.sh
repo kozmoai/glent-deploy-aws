@@ -27,8 +27,8 @@ if [ -d "$appDir/git-temp" ]; then
 fi
 # Make tmp directory to add files that will be comitted to repo
 mkdir -p $appDir/git-temp
-echo -e "\nCloning from https://$SSM_GITLAB_HOSTNAME/glent-admin/backstage-reference.git\n"
-git -C $appDir/git-temp clone -q "https://oauth2:$GITLAB_TOKEN@$SSM_GITLAB_HOSTNAME/glent-admin/backstage-reference.git"
+echo -e "\nCloning from https://$SSM_GITLAB_HOSTNAME/opa-admin/backstage-reference.git\n"
+git -C $appDir/git-temp clone -q "https://oauth2:$GITLAB_TOKEN@$SSM_GITLAB_HOSTNAME/opa-admin/backstage-reference.git"
 
 # Reinstate Git configs if available
 if [ -f "$appDir/git-config-temp" ]; then
@@ -38,7 +38,7 @@ fi
 # copy files to temp git repo
 rsync -a --delete --exclude='**/node_modules' --exclude='**/cdk.out' --exclude='**/.git' $appDir/backstage-reference/ $appDir/git-temp/backstage-reference
 
-rsync -a --delete --exclude='**/node_modules' --exclude='**/cdk.out' $appDir/iac/roots/{glent-common-constructs,glent-ecs-environment,glent-ecs-ec2-environment,glent-eks-environment,glent-serverless-environment,glent-gen-ai-environment} $appDir/git-temp/backstage-reference/environments
+rsync -a --delete --exclude='**/node_modules' --exclude='**/cdk.out' $appDir/iac/roots/{opa-common-constructs,opa-ecs-environment,opa-ecs-ec2-environment,opa-eks-environment,opa-serverless-environment,opa-gen-ai-environment} $appDir/git-temp/backstage-reference/environments
 \cp $appDir/iac/roots/package.json $appDir/git-temp/backstage-reference/environments
 
 

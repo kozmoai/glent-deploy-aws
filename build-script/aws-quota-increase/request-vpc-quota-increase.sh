@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 # This script will make a request through the AWS CLI to increase
 # the maximum allowed VPCs for an AWS account in

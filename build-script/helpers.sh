@@ -130,9 +130,9 @@ get_secret_value() {
 
 # Set constants that can be referenced by other scripts
 buildScriptDir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-backstageIacDir=$buildScriptDir/../iac/roots/glent-platform
+backstageIacDir=$buildScriptDir/../iac/roots/opa-platform
 backstageDir=$buildScriptDir/../backstage
-GITLAB_USER_NAME=glent-admin
+GITLAB_USER_NAME=opa-admin
 GITLAB_GROUP_NAME=aws-app
 
 validate_bash_version

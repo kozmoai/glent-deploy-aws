@@ -79,13 +79,13 @@ spec:
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
   steps:
-    - id: glentGetPlatformInfo
-      name: Get GLENT platform information
-      action: glent:get-platform-metadata
+    - id: opaGetPlatformInfo
+      name: Get OPA platform information
+      action: opa:get-platform-metadata
       
-    - id: glentGetAwsEnvProviders
+    - id: opaGetAwsEnvProviders
       name: Get AWS Environment Providers
-      action: glent:get-env-providers
+      action: opa:get-env-providers
       input:
         environmentRef: ${{ parameters.environment }}
 
@@ -93,31 +93,31 @@ spec:
       name: Print the environment entity info
       action: debug:log
       input:
-        message: ${{ steps['glentGetAwsEnvProviders'].output | dump }}
+        message: ${{ steps['opaGetAwsEnvProviders'].output | dump }}
 
     - id: createProviderPropsFiles
-      each: ${{ steps['glentGetAwsEnvProviders'].output.envProviders }}
+      each: ${{ steps['opaGetAwsEnvProviders'].output.envProviders }}
       name: Store environment provider parameters
       action: roadiehq:utils:fs:write
       input:
-        path: .awsdeployment/providers/${{ steps['glentGetAwsEnvProviders'].output.envName }}-${{ each.value.envProviderName}}.properties
+        path: .awsdeployment/providers/${{ steps['opaGetAwsEnvProviders'].output.envName }}-${{ each.value.envProviderName}}.properties
         content: |
           APP_SHORT_NAME=${{ parameters.component_id | lower }}
           TARGET_VPCID=${{ each.value.vpcId }}
-          TARGET_ENV_NAME=${{ steps['glentGetAwsEnvProviders'].output.envName }}
+          TARGET_ENV_NAME=${{ steps['opaGetAwsEnvProviders'].output.envName }}
           TARGET_ENV_PROVIDER_NAME=${{ each.value.envProviderName }}
           TARGET_BUCKET_NAME=${{ parameters.bucketName }}
           ACCOUNT=${{ each.value.accountId }}
           REGION=${{ each.value.region }}
           PREFIX=${{ each.value.envProviderPrefix }}
           ENV_ROLE_ARN=${{ each.value.assumedRoleArn }}
-          GLENT_CI_ENVIRONMENT=${{ steps['glentGetAwsEnvProviders'].output.envName }}-${{ each.value.envProviderName }}
-          GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL={% if steps['glentGetAwsEnvProviders'].output.envDeployManualApproval %}true{% else %}false{% endif %}
+          OPA_CI_ENVIRONMENT=${{ steps['opaGetAwsEnvProviders'].output.envName }}-${{ each.value.envProviderName }}
+          OPA_CI_ENVIRONMENT_MANUAL_APPROVAL={% if steps['opaGetAwsEnvProviders'].output.envDeployManualApproval %}true{% else %}false{% endif %}
     - id: fetchIac
       name: Fetch S3 Infrastructure as Code
       action: fetch:template
       input: 
-        url: https://{{ gitlab_hostname }}/glent-admin/backstage-reference/-/tree/main/common/aws_s3
+        url: https://{{ gitlab_hostname }}/opa-admin/backstage-reference/-/tree/main/common/aws_s3
         targetPath: ./.iac
         values:
           component_id: ${{ parameters.component_id | lower}}
@@ -132,15 +132,15 @@ spec:
           title: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
-          platformRegion: ${{ steps['glentGetPlatformInfo'].output.platformRegion }}
-          awsEnvironment: ${{ steps['glentGetAwsEnvProviders'].output.envRef }}
-          awsEnvironmentName: ${{ steps['glentGetAwsEnvProviders'].output.envName }}
-          awsEnvironmentProviderName: ${{ steps['glentGetAwsEnvProviders'].output.envProviders[0].envProviderName }}
-          awsEnvironmentPrefix: ${{ steps['glentGetAwsEnvProviders'].output.envProviders[0].envProviderPrefix }}
-          awsRegion: ${{ steps['glentGetAwsEnvProviders'].output.envProviders[0].region }}
-          awsAccount: ${{ steps['glentGetAwsEnvProviders'].output.envProviders[0].accountId }}
+          platformRegion: ${{ steps['opaGetPlatformInfo'].output.platformRegion }}
+          awsEnvironment: ${{ steps['opaGetAwsEnvProviders'].output.envRef }}
+          awsEnvironmentName: ${{ steps['opaGetAwsEnvProviders'].output.envName }}
+          awsEnvironmentProviderName: ${{ steps['opaGetAwsEnvProviders'].output.envProviders[0].envProviderName }}
+          awsEnvironmentPrefix: ${{ steps['opaGetAwsEnvProviders'].output.envProviders[0].envProviderPrefix }}
+          awsRegion: ${{ steps['opaGetAwsEnvProviders'].output.envProviders[0].region }}
+          awsAccount: ${{ steps['opaGetAwsEnvProviders'].output.envProviders[0].accountId }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          assumedRoleArn: ${{ steps['glentGetAwsEnvProviders'].output.envProviders[0].assumedRoleArn }}
+          assumedRoleArn: ${{ steps['opaGetAwsEnvProviders'].output.envProviders[0].assumedRoleArn }}
           bucketName: ${{ parameters.bucketName }}
     - id: publish
       name: Publish

@@ -17,19 +17,19 @@
       --request POST --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}" "${GL_API}"
       --form "key=AWS_ACCESS_KEY_ID" --form "value=$AWS_ACCESS_KEY_ID"
       --form "protected=true" --form "masked=true"
-      --form "environment_scope=$GLENT_CI_ENVIRONMENT"
+      --form "environment_scope=$OPA_CI_ENVIRONMENT"
     - >
       curl --silent --output /dev/null --show-error --fail
       --request POST --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}" "${GL_API}"
       --form "key=AWS_SECRET_ACCESS_KEY" --form "value=$AWS_SECRET_ACCESS_KEY"
       --form "protected=true" --form "masked=true"
-      --form "environment_scope=$GLENT_CI_ENVIRONMENT"
+      --form "environment_scope=$OPA_CI_ENVIRONMENT"
     - >
       curl --silent --output /dev/null --show-error --fail
       --request POST --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}" "${GL_API}"
       --form "key=AWS_SESSION_TOKEN" --form "value=$AWS_SESSION_TOKEN"
       --form "protected=true" --form "masked=true"
-      --form "environment_scope=$GLENT_CI_ENVIRONMENT"
+      --form "environment_scope=$OPA_CI_ENVIRONMENT"
 
 .abstract-get-aws-creds-auto:
   extends: .abstract-get-aws-creds
@@ -61,13 +61,13 @@
   script:
     - /busybox/echo PROVIDER_PROPS_FILE is $PROVIDER_PROPS_FILE
     - . ./$PROVIDER_PROPS_FILE
-    - /busybox/echo GLENT_CI_REGISTRY_IMAGE is $GLENT_CI_REGISTRY_IMAGE
+    - /busybox/echo OPA_CI_REGISTRY_IMAGE is $OPA_CI_REGISTRY_IMAGE
     - /busybox/mkdir -p /root/.aws
     - /busybox/echo "[default]" > /root/.aws/credentials
     - /busybox/echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> /root/.aws/credentials
     - /busybox/echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> /root/.aws/credentials
     - /busybox/echo "aws_session_token=$AWS_SESSION_TOKEN" >> /root/.aws/credentials
-    - LC_TAG=`echo "${GLENT_CI_REGISTRY_IMAGE}" | tr '[:upper:]' '[:lower:]'`
+    - LC_TAG=`echo "${OPA_CI_REGISTRY_IMAGE}" | tr '[:upper:]' '[:lower:]'`
     - mkdir -p /kaniko/.docker
     - echo "{\"credsStore\":\"ecr-login\"}" > /kaniko/.docker/config.json
     - /kaniko/executor
@@ -86,10 +86,10 @@
     - export GL_API=https://$CI_SERVER_HOST/api/v4/projects/$CI_PROJECT_ID/variables
     - >
       curl --globoff --request DELETE --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}"
-      "${GL_API}/AWS_ACCESS_KEY_ID?filter[environment_scope]=$GLENT_CI_ENVIRONMENT"
+      "${GL_API}/AWS_ACCESS_KEY_ID?filter[environment_scope]=$OPA_CI_ENVIRONMENT"
     - >
       curl --globoff --request DELETE --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}"
-      "${GL_API}/AWS_SECRET_ACCESS_KEY?filter[environment_scope]=$GLENT_CI_ENVIRONMENT"
+      "${GL_API}/AWS_SECRET_ACCESS_KEY?filter[environment_scope]=$OPA_CI_ENVIRONMENT"
     - >
       curl --globoff --request DELETE --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}"
-      "${GL_API}/AWS_SESSION_TOKEN?filter[environment_scope]=$GLENT_CI_ENVIRONMENT"
+      "${GL_API}/AWS_SESSION_TOKEN?filter[environment_scope]=$OPA_CI_ENVIRONMENT"

@@ -21,7 +21,7 @@ iac-deployment-env-provider:
     - echo -e "\e[0Ksection_start:`date +%s`:aws_identity[collapsed=true]\r\e[0KAssume AWS IAM Role"
     - aws sts get-caller-identity
     # Store the access token before assuming the environment provisioning role
-    - ACCESS_TOKEN=`aws secretsmanager get-secret-value --secret-id glent-admin-gitlab-secrets --region ${GLENT_PLATFORM_REGION} | jq --raw-output '.SecretString' | jq -r .apiToken`
+    - ACCESS_TOKEN=`aws secretsmanager get-secret-value --secret-id opa-admin-gitlab-secrets --region ${OPA_PLATFORM_REGION} | jq --raw-output '.SecretString' | jq -r .apiToken`
     - ROLE_OUTPUT=$(aws sts assume-role --role-arn "$ROLE_ARN" --role-session-name "pipelineJob-$AWS_ACCOUNT_ID" --duration-second=3600 --output json)
     - export AWS_ACCESS_KEY_ID=$(echo ${ROLE_OUTPUT} | jq -r '.Credentials.AccessKeyId')
     - export AWS_SECRET_ACCESS_KEY=$(echo ${ROLE_OUTPUT} | jq -r '.Credentials.SecretAccessKey')
@@ -31,8 +31,8 @@ iac-deployment-env-provider:
 
     - echo -e "\e[0Ksection_start:`date +%s`:get_kubectl[collapsed=true]\r\e[0KInstall Kubectl"
     - apt install sudo
-    - curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-    - echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    - curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    - echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
     - sudo apt update
     - sudo apt install kubectl
     - echo -e "\e[0Ksection_end:`date +%s`:get_kubectl\r\e[0K"
@@ -55,7 +55,7 @@ iac-deployment-env-provider:
     - cdk bootstrap aws://$AWS_ACCOUNT_ID/$AWS_DEFAULT_REGION
     - echo -e "\e[0Ksection_end:`date +%s`:cdk_bootstrap\r\e[0K"
 
-    - cd .iac/glent-eks-environment
+    - cd .iac/opa-eks-environment
 
     - echo -e "\e[0Ksection_start:`date +%s`:yarn_install[collapsed=true]\r\e[0KYarn Install"
     - yarn install
@@ -118,7 +118,7 @@ iac-deployment-env-provider:
 
     - echo -e "\e[0Ksection_start:`date +%s`:git[collapsed=true]\r\e[0KUpdate Git Repo"
     - git config --global user.email "fsi-pace-pe@amazon.com"
-    - git config --global user.name "GLENT CICD User"
+    - git config --global user.name "OPA CICD User"
     - git add catalog-info.yaml
     - git status
     - UPDATE_COUNT=$(git diff --cached --numstat | wc -l | sed 's/ *$//g')
@@ -128,7 +128,7 @@ iac-deployment-env-provider:
     - echo -e "\e[0Ksection_end:`date +%s`:git\r\e[0K"
 
     - echo -e "\e[0Ksection_start:`date +%s`:lambda[collapsed=true]\r\e[0KUpdate Kubectl Lambda"
-    - cd $CI_PROJECT_DIR/.iac/glent-eks-environment
+    - cd $CI_PROJECT_DIR/.iac/opa-eks-environment
     - echo "Updating ${KUBECTL_LAMBDA_ARN#*function:}"
     - aws lambda update-function-code --function-name ${KUBECTL_LAMBDA_ARN#*function:} --zip-file fileb://kubectl-helm-lambda.zip
     - echo -e "\e[0Ksection_end:`date +%s`:lambda\r\e[0K"
@@ -146,7 +146,7 @@ iac-deployment-env-provider:
     # - export AWS_SESSION_TOKEN=$(echo ${ROLE_OUTPUT} | jq -r '.Credentials.SessionToken')
     # - aws sts get-caller-identity
     # # Get configs for a kubectl session
-    # - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name glent-$ENV_NAME-cluster
+    # - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name opa-$ENV_NAME-cluster
     # - echo "Performing rolling restart on coredns to ensure it uses the latest aws-logging ConfigMap"
     # - kubectl rollout restart deployment/coredns -n kube-system
     # - echo -e "\e[0Ksection_end:`date +%s`:kubectl\r\e[0K"

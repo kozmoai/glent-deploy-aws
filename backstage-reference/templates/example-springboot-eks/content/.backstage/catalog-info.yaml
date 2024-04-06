@@ -13,7 +13,7 @@ metadata:
     - k8s
   # links:
   #   - title: ${{ values.component_id}} endpoint
-  #     url: ${{ values.aws_bp_outputs["glent-alb-endpoint"] | dump }}
+  #     url: ${{ values.aws_bp_outputs["opa-alb-endpoint"] | dump }}
   iacType: cdk
   repoSecretArn: ${{ values.awsSecretRepoArn | dump }}
 

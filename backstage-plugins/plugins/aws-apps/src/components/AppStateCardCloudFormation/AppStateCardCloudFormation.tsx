@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { InfoCard, EmptyState } from '@backstage/core-components';
@@ -7,7 +7,7 @@ import { LinearProgress } from '@material-ui/core';
 import { Button, CardContent, Divider, Grid, Typography } from '@mui/material';
 import React, { useState, useEffect, useRef } from 'react';
 import { DescribeStackEventsCommandOutput, UpdateStackCommandOutput, CreateStackCommandOutput, DeleteStackCommandOutput, } from "@aws-sdk/client-cloudformation";
-import { glentApiRef } from '../../api';
+import { opaApiRef } from '../../api';
 import { useAsyncAwsApp } from '../../hooks/useAwsApp';
 import { formatWithTime } from '../../helpers/date-utils';
 import { useCancellablePromise } from '../../hooks/useCancellablePromise';
@@ -21,10 +21,10 @@ type stackEvent = {
 
 const eventStyle = { paddingRight: "15px" };
 
-const GlentAppStateOverview = ({
+const OpaAppStateOverview = ({
   input: { awsComponent, stack, s3BucketName, refresh }
 }: { input: { awsComponent: AWSComponent, stack: CloudFormationStack, s3BucketName: string, refresh: VoidFunction } }) => {
-  const api = useApi(glentApiRef)
+  const api = useApi(opaApiRef)
 
   const [polling, setPolling] = useState(false);
   const [pollingEnabled, setPollingEnabled] = useState(true);
@@ -155,7 +155,7 @@ const GlentAppStateOverview = ({
         environmentName: awsComponent.currentEnvironment.environment.name,
         gitHost: awsComponent.gitHost,
         gitProjectGroup: 'aws-app',
-        gitAdminSecret: 'glent-admin-gitlab-secrets',
+        gitAdminSecret: 'opa-admin-gitlab-secrets',
         gitRepoName: awsComponent.gitRepo.split('/')[1],
       }));
 
@@ -183,7 +183,7 @@ const GlentAppStateOverview = ({
         environmentName: awsComponent.currentEnvironment.environment.name,
         gitHost: awsComponent.gitHost,
         gitProjectGroup: 'aws-app',
-        gitAdminSecret: 'glent-admin-gitlab-secrets',
+        gitAdminSecret: 'opa-admin-gitlab-secrets',
         gitRepoName: awsComponent.gitRepo.split('/')[1],
       }));
 
@@ -348,7 +348,7 @@ export const AppStateCard = () => {
       refresh: awsAppLoadingStatus.refresh!,
     };
 
-    return <GlentAppStateOverview input={input} />
+    return <OpaAppStateOverview input={input} />
   } else {
     return <EmptyState missing="data" title="No state data to show" description="State data would show here" />
   }

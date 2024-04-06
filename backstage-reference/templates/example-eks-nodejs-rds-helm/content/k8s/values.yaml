@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-glent:
+opa:
   environmentName: ENV_PLACEHOLDER
   
 appAdminRole: APP_ADMIN_ROLE_PLACEHOLDER

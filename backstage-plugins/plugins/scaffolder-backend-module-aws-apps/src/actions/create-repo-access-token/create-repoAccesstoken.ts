@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
@@ -17,7 +17,7 @@ export function createRepoAccessTokenAction(options: { integrations: ScmIntegrat
     projectId: number;
     region?: string;
   }>({
-    id: 'glent:createRepoAccessToken:gitlab',
+    id: 'opa:createRepoAccessToken:gitlab',
     description: 'Initializes a git repository of the content in the workspace, and publishes it to GitLab.',
     schema: {
       input: {

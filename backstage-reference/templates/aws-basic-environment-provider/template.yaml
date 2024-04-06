@@ -30,7 +30,7 @@ spec:
           title: Prefix
           type: string
           description: Prefix for environment - examples - payments, engineering, infra
-          default: glent
+          default: opa
         env_description:
           title: Description
           type: string
@@ -127,17 +127,17 @@ spec:
             allowedOwners:
               - aws-environment-providers
   steps:
-    - id: glentGetPlatformInfo
-      name: Get GLENT platform information
-      action: glent:get-platform-metadata
+    - id: opaGetPlatformInfo
+      name: Get OPA platform information
+      action: opa:get-platform-metadata
       
     - id: resolvePlatformVariables
       name: Resolve Platform Variables
-      action: glent:get-platform-parameters
+      action: opa:get-platform-parameters
       input:
         paramKeys:
-          - '/glent/platform-role'
-          - '/glent/pipeline-role'
+          - '/opa/platform-role'
+          - '/opa/pipeline-role'
     - id: fetchBase
       name: Fetch Code Base
       action: fetch:template
@@ -149,19 +149,19 @@ spec:
           description: ${{ parameters.env_description }}
           owner: ${{ parameters.owner }}
           env_type: serverless
-          platformRegion: ${{ steps['glentGetPlatformInfo'].output.platformRegion }}
+          platformRegion: ${{ steps['opaGetPlatformInfo'].output.platformRegion }}
           awsRegion: ${{ parameters.awsRegion }}
           awsAccountID: ${{ parameters.awsAccountID }}
           environmentRole: ${{ parameters.environmentRole }}
-          platformRole: ${{steps['resolvePlatformVariables'].output.params['/glent/platform-role'] }}
-          pipelineRole: ${{steps['resolvePlatformVariables'].output.params['/glent/pipeline-role'] }}
+          platformRole: ${{steps['resolvePlatformVariables'].output.params['/opa/platform-role'] }}
+          pipelineRole: ${{steps['resolvePlatformVariables'].output.params['/opa/pipeline-role'] }}
           prefix: ${{parameters.prefix}}
     - id: fetchBaseIAC
       name: Fetch IAC Base
       action: fetch:plain
       input:
         targetPath: ./.iac
-        url: "https://{{gitlab_hostname}}/glent-admin/backstage-reference/-/tree/main/environments"
+        url: "https://{{gitlab_hostname}}/opa-admin/backstage-reference/-/tree/main/environments"
     - id: publish
       name: Publish
       action: publish:gitlab

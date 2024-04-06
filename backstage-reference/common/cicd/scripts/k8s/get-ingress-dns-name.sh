@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 # Search for DNS name of a load balancer that is created by a k8s Ingress.
 # We will look for the load balancer based on a tag.

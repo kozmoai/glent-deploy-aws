@@ -33,7 +33,7 @@ if (process.env.SECRET_ID) {
 }
 
 new CdkSecretsManagerStack(app, stackName, {
-  secretId: process.env.SECRET_ID || "glent-generated-secret",
+  secretId: process.env.SECRET_ID || "opa-generated-secret",
   secretDescription: process.env.SECRET_DESCRIPTION || "Secret created from Backstage",
   env,
 });

@@ -5,24 +5,24 @@
 # 0.5.7 will install Backstage 1.20.3
 BACKSTAGE_CREATE_APP_VERSION="0.5.8"
 
-# The GLENT Backstage plugins can be installed in 1 of 2 ways. Firstly, the latest
+# The OPA Backstage plugins can be installed in 1 of 2 ways. Firstly, the latest
 # published NPM packages can be used. Alternatively, the plugins can be installed
 # based upon the source code provided in the 'backstage-plugins' directory.
 # If you want to modify the plugin source code or use plugin code that
-# has not been published to NPM yet, you'll need to install the GLENT plugins
+# has not been published to NPM yet, you'll need to install the OPA plugins
 # from the 'backstage-plugins' source code.
 # 
-# Set installMode to "from-source" to build/install GLENT plugins from source
-# or set installMode to "npm" to install the latest published GLENT NPM packages.
+# Set installMode to "from-source" to build/install OPA plugins from source
+# or set installMode to "npm" to install the latest published OPA NPM packages.
 installMode="npm"
 NC='\033[0m' # No Color
 RED='\033[1;31m'
 
 biScriptDir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-glentHomeDir=$biScriptDir/..
-cd $glentHomeDir
-glentHomeDir=$(pwd)
-backstageDir=$glentHomeDir/backstage
+opaHomeDir=$biScriptDir/..
+cd $opaHomeDir
+opaHomeDir=$(pwd)
+backstageDir=$opaHomeDir/backstage
 
 echo "" #intentional blank line
 
@@ -40,7 +40,7 @@ echo "Copying AWS Apps plugins"
 echo "" #intentional blank line
 echo "installMode is \"$installMode\""
 if [[ "$installMode" == "from-source" ]]; then
-    cp -R $glentHomeDir/backstage-plugins/ $backstageDir
+    cp -R $opaHomeDir/backstage-plugins/ $backstageDir
 
     # It is expected that the version identifier in each plugin's package.json will be
     # a larger semver identifier than any version that is officially published to npm registry.
@@ -49,17 +49,17 @@ if [[ "$installMode" == "from-source" ]]; then
     AWS_APPS_DEMO_VERSION=$(cat $backstageDir/plugins/aws-apps-demo/package.json | jq -r '.version')
     AWS_APPS_SCAFFOLDER_VERSION=$(cat $backstageDir/plugins/scaffolder-backend-module-aws-apps/package.json | jq -r '.version')
 else
-    AWS_APPS_VERSION=^$(cat $glentHomeDir/backstage-plugins/plugins/aws-apps/package.json | jq -r '.version')
-    AWS_APPS_BACKEND_VERSION=^$(cat $glentHomeDir/backstage-plugins/plugins/aws-apps-backend/package.json | jq -r '.version')
-    AWS_APPS_DEMO_VERSION=^$(cat $glentHomeDir/backstage-plugins/plugins/aws-apps-demo/package.json | jq -r '.version')
-    AWS_APPS_SCAFFOLDER_VERSION=^$(cat $glentHomeDir/backstage-plugins/plugins/scaffolder-backend-module-aws-apps/package.json | jq -r '.version')
+    AWS_APPS_VERSION=^$(cat $opaHomeDir/backstage-plugins/plugins/aws-apps/package.json | jq -r '.version')
+    AWS_APPS_BACKEND_VERSION=^$(cat $opaHomeDir/backstage-plugins/plugins/aws-apps-backend/package.json | jq -r '.version')
+    AWS_APPS_DEMO_VERSION=^$(cat $opaHomeDir/backstage-plugins/plugins/aws-apps-demo/package.json | jq -r '.version')
+    AWS_APPS_SCAFFOLDER_VERSION=^$(cat $opaHomeDir/backstage-plugins/plugins/scaffolder-backend-module-aws-apps/package.json | jq -r '.version')
 fi
 
 cd $backstageDir
 
 echo "" #intentional blank line
 echo "Copying the AWS production configuration to backstage"
-cp $glentHomeDir/config/app-config.aws-production.yaml $backstageDir
+cp $opaHomeDir/config/app-config.aws-production.yaml $backstageDir
 
 # Install backend dependencies
 echo "" #intentional blank line
@@ -95,6 +95,6 @@ cd -
 # Later versions of Backstage may modify the base versions of these files and the overwrite action may wipe out intended Backstage changes.
 # A preferred approach is to be intentional in the customization of Backstage and follow the instructions in the 
 # plugins' README files to manually modify the Backstage source files
-# patch -d$(basename ${backstageDir}) -p1 < $glentHomeDir/backstage-mods/backstage_${BACKSTAGE_CREATE_APP_VERSION}.diff.patch
-git apply --directory=$(basename $backstageDir) --verbose --whitespace=nowarn $glentHomeDir/backstage-mods/backstage_${BACKSTAGE_CREATE_APP_VERSION}.diff.patch || \
-    (echo "${RED}Error applying GLENT diff patch to Backstage. This error can be ignored if the patch was already successfully applied previously. If not, the patch will need to be applied manually before proceeding.${NC}")
+# patch -d$(basename ${backstageDir}) -p1 < $opaHomeDir/backstage-mods/backstage_${BACKSTAGE_CREATE_APP_VERSION}.diff.patch
+git apply --directory=$(basename $backstageDir) --verbose --whitespace=nowarn $opaHomeDir/backstage-mods/backstage_${BACKSTAGE_CREATE_APP_VERSION}.diff.patch || \
+    (echo "${RED}Error applying OPA diff patch to Backstage. This error can be ignored if the patch was already successfully applied previously. If not, the patch will need to be applied manually before proceeding.${NC}")

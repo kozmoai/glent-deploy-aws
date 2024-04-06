@@ -33,7 +33,7 @@ spec:
           title: Prefix
           type: string
           description: Prefix for environment - examples - payments, engineering, infra
-          default: glent
+          default: opa
         env_description:
           title: Description
           type: string
@@ -267,17 +267,17 @@ spec:
             allowedOwners:
               - aws-environment-providers
   steps:
-    - id: glentGetPlatformInfo
-      name: Get GLENT platform information
-      action: glent:get-platform-metadata
+    - id: opaGetPlatformInfo
+      name: Get OPA platform information
+      action: opa:get-platform-metadata
 
     - id: resolvePlatformVariables
       name: Resolve Platform Variables
-      action: glent:get-platform-parameters
+      action: opa:get-platform-parameters
       input:
         paramKeys:
-          - '/glent/platform-role'
-          - '/glent/pipeline-role'
+          - '/opa/platform-role'
+          - '/opa/pipeline-role'
 
     - id: fetchBase
       name: Fetch Code Base
@@ -293,9 +293,9 @@ spec:
           awsRegion: ${{ parameters.awsRegion }}
           awsAccount: ${{ parameters.awsAccountID }}
           environmentRole: ${{ parameters.environmentRole }}
-          platformRole: ${{steps['resolvePlatformVariables'].output.params['/glent/platform-role'] }}
-          pipelineRole: ${{steps['resolvePlatformVariables'].output.params['/glent/pipeline-role'] }}
-          platformRegion: ${{ steps['glentGetPlatformInfo'].output.platformRegion }}
+          platformRole: ${{steps['resolvePlatformVariables'].output.params['/opa/platform-role'] }}
+          pipelineRole: ${{steps['resolvePlatformVariables'].output.params['/opa/pipeline-role'] }}
+          platformRegion: ${{ steps['opaGetPlatformInfo'].output.platformRegion }}
           prefix: ${{ parameters.prefix }}
           cidr: ${{ parameters.cidr }}
           vpcId: ${{parameters.vpcId|default('', true)}}
@@ -314,14 +314,14 @@ spec:
       name: Fetch IAC Base
       action: fetch:plain
       input:
-        targetPath: ./.iac/glent-eks-environment
-        url: "https://{{gitlab_hostname}}/glent-admin/backstage-reference/-/tree/main/environments/glent-eks-environment"
+        targetPath: ./.iac/opa-eks-environment
+        url: "https://{{gitlab_hostname}}/opa-admin/backstage-reference/-/tree/main/environments/opa-eks-environment"
     - id: fetchIacCommonConstructs
       name: Fetch IaC Common Constructs
       action: fetch:plain
       input:
-        targetPath: ./.iac/glent-common-constructs
-        url: "https://{{gitlab_hostname}}/glent-admin/backstage-reference/-/tree/main/environments/glent-common-constructs"
+        targetPath: ./.iac/opa-common-constructs
+        url: "https://{{gitlab_hostname}}/opa-admin/backstage-reference/-/tree/main/environments/opa-common-constructs"
     - id: createYarnPackageFile
       name: Configure Yarn Package Manager
       action: roadiehq:utils:fs:write
@@ -332,8 +332,8 @@ spec:
             "private": true,
             "name": "aws-application-development",
             "workspaces": [
-              "glent-eks-environment",
-              "glent-common-constructs"
+              "opa-eks-environment",
+              "opa-common-constructs"
             ]
           }
     - id: publish

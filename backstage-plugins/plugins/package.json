@@ -1,10 +1,10 @@
 {
-    "name": "kozmo-deploy-aws",
+    "name": "app-development-for-backstage-io-on-aws",
     "description": "App Development for Backstage.io on AWS plugins",
     "version": "0.0.0",
     "repository": {
       "type": "git",
-      "url": "github:kozmoai/kozmo-deploy-aws"
+      "url": "github:awslabs/app-development-for-backstage-io-on-aws"
     },
     "license": "Apache-2.0",
     "author": {

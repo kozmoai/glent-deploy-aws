@@ -1,5 +1,5 @@
 {
-  "name": "@aws/plugin-aws-apps-demo-for-backstage",
+  "name": "@kozmoai/plugin-aws-apps-demo-for-backstage",
   "description": "App Development for Backstage.io on AWS - home page and theme demo",
   "version": "0.3.1",
   "main": "src/index.ts",
@@ -16,11 +16,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kozmoai/kozmo-deploy-aws.git",
+    "url": "git+https://github.com/awslabs/app-development-for-backstage-io-on-aws.git",
     "directory": "backstage-plugins/plugins/aws-apps-demo"
   },
   "bugs": {
-    "url": "https://github.com/kozmoai/kozmo-deploy-aws/issues"
+    "url": "https://github.com/awslabs/app-development-for-backstage-io-on-aws/issues"
   },
   "backstage": {
     "role": "frontend-plugin"

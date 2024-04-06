@@ -30,5 +30,5 @@ See https://kubernetes.io/docs/concepts/overview/working-with-objects/common-lab
 */}}
 {{- define "${{ values.component_id }}.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "${{ values.component_id }}.name" . }}
-app.kubernetes.io/env: {{ .Values.glent.environmentName }}
+app.kubernetes.io/env: {{ .Values.opa.environmentName }}
 {{- end }}

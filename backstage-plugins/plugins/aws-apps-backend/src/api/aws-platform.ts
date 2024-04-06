@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { CloudFormationClient, DeleteStackCommand, DeleteStackCommandOutput } from '@aws-sdk/client-cloudformation';
@@ -327,10 +327,10 @@ export class AwsAppsPlatformApi {
 
         let propsContent =
           `ACCOUNT=${provider.awsAccount}\nREGION=${provider.awsRegion}\nTARGET_ENV_NAME=${provider.environmentName}\nPREFIX=${provider.prefix}\n` +
-          `TARGET_ENV_PROVIDER_NAME=${provider.providerName}\nGLENT_CI_ENVIRONMENT=${provider.environmentName}-${provider.providerName}\n` +
-          `GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL=${input.envRequiresManualApproval}\n` +
-          `GLENT_CI_REGISTRY_IMAGE=${provider.awsAccount}.dkr.ecr.${provider.awsRegion}.amazonaws.com/${input.appName}-${input.envName}-${provider.providerName}\n` +
-          `GLENT_CI_REGISTRY=${provider.awsAccount}.dkr.ecr.${provider.awsRegion}.amazonaws.com\n`;
+          `TARGET_ENV_PROVIDER_NAME=${provider.providerName}\nOPA_CI_ENVIRONMENT=${provider.environmentName}-${provider.providerName}\n` +
+          `OPA_CI_ENVIRONMENT_MANUAL_APPROVAL=${input.envRequiresManualApproval}\n` +
+          `OPA_CI_REGISTRY_IMAGE=${provider.awsAccount}.dkr.ecr.${provider.awsRegion}.amazonaws.com/${input.appName}-${input.envName}-${provider.providerName}\n` +
+          `OPA_CI_REGISTRY=${provider.awsAccount}.dkr.ecr.${provider.awsRegion}.amazonaws.com\n`;
 
         Object.keys(provider.parameters).forEach(key => {
           propsContent += `${key}=${provider.parameters[key]}\n`;

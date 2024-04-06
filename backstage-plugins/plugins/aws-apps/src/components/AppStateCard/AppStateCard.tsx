@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { Task } from '@aws-sdk/client-ecs';
@@ -8,14 +8,14 @@ import { LinearProgress } from '@material-ui/core';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Button, CardContent, Divider, Grid, IconButton, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { glentApiRef } from '../../api';
+import { opaApiRef } from '../../api';
 import { useAsyncAwsApp } from '../../hooks/useAwsApp';
 import { AWSComponent, AWSECSAppDeploymentEnvironment } from '@aws/plugin-aws-apps-common-for-backstage';
 
-const GlentAppStateOverview = ({
+const OpaAppStateOverview = ({
   input: { cluster, serviceArn, taskDefArn }
 }: { input: { cluster: string, serviceArn: string, taskDefArn: string, awsComponent: AWSComponent } }) => {
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
 
   const [taskData, setTaskData] = useState<Task>({});
   const [loading, setLoading] = useState(true);
@@ -184,7 +184,7 @@ export const AppStateCard = () => {
       taskDefArn: latestTaskDef,
       awsComponent: awsAppLoadingStatus.component
     };
-    return <GlentAppStateOverview input={input} />
+    return <OpaAppStateOverview input={input} />
   } else {
     return <EmptyState missing="data" title="No state data to show" description="State data would show here" />
   }

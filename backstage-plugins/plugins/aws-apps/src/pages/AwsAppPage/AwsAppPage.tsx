@@ -1,7 +1,7 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { GenericAWSEnvironment, readGlentAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';
+import { GenericAWSEnvironment, readOpaAppAuditPermission } from '@aws/plugin-aws-apps-common-for-backstage';
 import { Entity } from '@backstage/catalog-model';
 import { EmptyState } from '@backstage/core-components';
 import { EntityLayout, EntitySwitch } from '@backstage/plugin-catalog';
@@ -47,7 +47,7 @@ export function AwsAppPage(_props: AwsAppPageProps) {
   const awsAppLoadingStatus = useAsyncAwsApp();
 
   const { loading: loadingPermission, allowed: canReadAudit } = usePermission({
-    permission: readGlentAppAuditPermission,
+    permission: readOpaAppAuditPermission,
   });
 
   const awsAppLogsContent = (
@@ -98,7 +98,7 @@ export function AwsAppPage(_props: AwsAppPageProps) {
         </EntityLayout.Route>
         {!loadingPermission && canReadAudit && (
           <EntityLayout.Route path="/audit" title="Audit">
-            <RequirePermission permission={readGlentAppAuditPermission} errorPage={<></>}>
+            <RequirePermission permission={readOpaAppAuditPermission} errorPage={<></>}>
               {auditContent}
             </RequirePermission>
           </EntityLayout.Route>
@@ -125,7 +125,7 @@ export function AwsAppPage(_props: AwsAppPageProps) {
         </EntityLayout.Route>
         {!loadingPermission && canReadAudit && (
           <EntityLayout.Route path="/audit" title="Audit">
-            <RequirePermission permission={readGlentAppAuditPermission} errorPage={<></>}>
+            <RequirePermission permission={readOpaAppAuditPermission} errorPage={<></>}>
               {auditContent}
             </RequirePermission>
           </EntityLayout.Route>
@@ -152,7 +152,7 @@ export function AwsAppPage(_props: AwsAppPageProps) {
         </EntityLayout.Route>
         {!loadingPermission && canReadAudit && (
           <EntityLayout.Route path="/audit" title="Audit">
-            <RequirePermission permission={readGlentAppAuditPermission} errorPage={<></>}>
+            <RequirePermission permission={readOpaAppAuditPermission} errorPage={<></>}>
               {auditContent}
             </RequirePermission>
           </EntityLayout.Route>

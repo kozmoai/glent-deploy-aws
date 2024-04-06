@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { ReactNode, createContext } from 'react';
@@ -12,7 +12,7 @@ import { Entity, EntityRelation, parseEntityRef } from '@backstage/catalog-model
 import { AWSEnvironmentEntityV1, AWSEnvironmentProviderEntityV1 } from '@aws/plugin-aws-apps-backend-for-backstage';
 import { AWSComponent, AWSComponentType, AWSDeploymentEnvironment, AWSECSAppDeploymentEnvironment, AWSEKSAppDeploymentEnvironment, AWSResourceDeploymentEnvironment, AWSServerlessAppDeploymentEnvironment, AwsDeploymentEnvironments, CloudFormationStack, GenericAWSEnvironment } from '@aws/plugin-aws-apps-common-for-backstage';
 import { ProviderType, ExtraStackDeployStatus, DeployStackStatus } from '../helpers/constants';
-import { glentApiRef } from '../api';
+import { opaApiRef } from '../api';
 import { formatWithTime } from '../helpers/date-utils';
 
 interface EnvEntityMap {
@@ -65,7 +65,7 @@ export const useAwsComponentFromContext = (): AwsComponentHookLoadingStatus => {
   const { entity } = useEntity();
   const catalogApi = useApi(catalogApiRef);
   const config = useApi(configApiRef);
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
   api.setPlatformParams(entity.metadata.name, config.getString('backend.platformRegion'));
   if (entity.metadata.name != _app_name)
   {

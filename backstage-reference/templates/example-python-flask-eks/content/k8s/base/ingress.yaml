@@ -9,7 +9,7 @@ metadata:
     alb.ingress.kubernetes.io/success-codes: "200,201,302"
     alb.ingress.kubernetes.io/target-type: "ip"
 
-    # Tag load balancer so that it shows up as an GLENT application resource
+    # Tag load balancer so that it shows up as an OPA application resource
     # Note - this setting must be overriden per environment provider
     alb.ingress.kubernetes.io/tags: "aws-apps-${{ values.component_id }}-ENV_PLACEHOLDER-ENV_PROVIDER_PLACEHOLDER=${{ values.component_id }}"
 

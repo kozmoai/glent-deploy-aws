@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { Table, TableColumn } from '@backstage/core-components';
@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { Close } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
-import { glentApiRef } from '../../api';
+import { opaApiRef } from '../../api';
 import { SecretStringComponent } from '../common';
 
 // Declare styles to use in the components
@@ -118,7 +118,7 @@ export const ResourceDetailsDialog = ({
   ];
 
   const classes = useStyles();
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
   const [loading, setLoading] = useState(true);
   const [_, setError] = useState(false);
   const [tableColumns, setTableColumns] = useState<TableColumn<{}>[]>([{}]);

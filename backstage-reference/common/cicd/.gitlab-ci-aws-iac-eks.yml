@@ -180,7 +180,7 @@
         echo -e "\e[0Ksection_end:`date +%s`:deploy_app\r\e[0K";
       else
         echo "The CDK stack has already been deployed to the $TARGET_ENV_PROVIDER_NAME provider.";
-        echo "Skipping deploying k8s app. It can still be deployed via kubectl or via the GLENT UI.";
+        echo "Skipping deploying k8s app. It can still be deployed via kubectl or via the OPA UI.";
       fi
   
     - echo -e "\e[0Ksection_start:`date +%s`:backstage_entity[collapsed=true]\r\e[0KUpdate Backstage Entity"
@@ -226,11 +226,11 @@
     - export GL_API=https://$CI_SERVER_HOST/api/v4/projects/$CI_PROJECT_ID/variables
     - >
       curl --globoff --request DELETE --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}"
-      "${GL_API}/AWS_ACCESS_KEY_ID?filter[environment_scope]=$GLENT_CI_ENVIRONMENT"
+      "${GL_API}/AWS_ACCESS_KEY_ID?filter[environment_scope]=$OPA_CI_ENVIRONMENT"
     - >
       curl --globoff --request DELETE --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}"
-      "${GL_API}/AWS_SECRET_ACCESS_KEY?filter[environment_scope]=$GLENT_CI_ENVIRONMENT"
+      "${GL_API}/AWS_SECRET_ACCESS_KEY?filter[environment_scope]=$OPA_CI_ENVIRONMENT"
     - >
       curl --globoff --request DELETE --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}"
-      "${GL_API}/AWS_SESSION_TOKEN?filter[environment_scope]=$GLENT_CI_ENVIRONMENT"
+      "${GL_API}/AWS_SESSION_TOKEN?filter[environment_scope]=$OPA_CI_ENVIRONMENT"
     - echo -e "\e[0Ksection_end:`date +%s`:delete-aws_creds\r\e[0K"

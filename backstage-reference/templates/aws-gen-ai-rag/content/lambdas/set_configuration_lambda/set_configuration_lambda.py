@@ -18,7 +18,7 @@ def lambda_handler(event, context):
         # Update the SSM Parameters
         for key, value in parameters.items():
 
-            parameter_name = f'/glent/gen-ai/{app_name}/{key}'
+            parameter_name = f'/opa/gen-ai/{app_name}/{key}'
 
             ssm.put_parameter(
                 Name=parameter_name,

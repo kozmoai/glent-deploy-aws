@@ -1,5 +1,5 @@
 {
-  "name": "@aws/plugin-aws-apps-common-for-backstage",
+  "name": "@kozmoai/plugin-aws-apps-common-for-backstage",
   "description": "Common functionalities for the aws-apps plugin",
   "version": "0.3.2",
   "main": "src/index.ts",
@@ -17,11 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kozmoai/kozmo-deploy-aws.git",
+    "url": "git+https://github.com/awslabs/app-development-for-backstage-io-on-aws.git",
     "directory": "backstage-plugins/plugins/aws-apps-common"
   },
   "bugs": {
-    "url": "https://github.com/kozmoai/kozmo-deploy-aws/issues"
+    "url": "https://github.com/awslabs/app-development-for-backstage-io-on-aws/issues"
   },
   "backstage": {
     "role": "common-library"

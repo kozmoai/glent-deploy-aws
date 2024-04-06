@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { AssumeRoleCommand, STSClient } from '@aws-sdk/client-sts';
@@ -60,7 +60,7 @@ async function fetchCreds(
     // const ssmClient = new SSMClient({ region });
     // const ssmResponse = await ssmClient.send(
     //   new GetParameterCommand({
-    //     Name: '/glent/platform/SecurityMappingTable',
+    //     Name: '/opa/platform/SecurityMappingTable',
     //     WithDecryption: true,
     //   }),
     // );

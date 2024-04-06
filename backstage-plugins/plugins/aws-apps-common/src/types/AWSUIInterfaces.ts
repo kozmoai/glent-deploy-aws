@@ -1,11 +1,11 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { AWSEnvironmentEntityV1, AWSEnvironmentProviderEntityV1 } from "@aws/plugin-aws-apps-backend-for-backstage";
 import { DeployStackStatus } from "@aws/plugin-aws-apps-for-backstage/src/helpers/constants";
 
 /** 
- * A type for interacting with GLENT Backend environments
+ * A type for interacting with OPA Backend environments
  * @public
 */
 export type BackendParams = {

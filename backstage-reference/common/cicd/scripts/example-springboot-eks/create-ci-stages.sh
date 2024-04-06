@@ -62,25 +62,25 @@ do
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /generate CICD stages/\"" >> $STAGE_FILE_PATH
     echo "      when: never" >> $STAGE_FILE_PATH
     echo "    - if: \"\$CI_COMMIT_BRANCH == '$CI_DEFAULT_BRANCH'\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "      changes:" >> $STAGE_FILE_PATH
     echo "      - .iac/**/*" >> $STAGE_FILE_PATH
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /Added CICD environment stage ${TARGET_ENV_NAME}/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /^Bind Resource to env ${TARGET_ENV_NAME}-${TARGET_ENV_PROVIDER_NAME}/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /^unBind Resource to env ${TARGET_ENV_NAME}-${TARGET_ENV_PROVIDER_NAME}/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /Added multiple environment stages/\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "  stage: prepare-${TARGET_ENV_NAME}-stage" >> $STAGE_FILE_PATH
@@ -96,7 +96,7 @@ do
     echo "    - if: \"\$CI_COMMIT_TITLE =~ /generate CICD stages/\"" >> $STAGE_FILE_PATH
     echo "      when: never" >> $STAGE_FILE_PATH
     echo "    - if: \"\$CI_COMMIT_BRANCH == '$CI_DEFAULT_BRANCH'\"" >> $STAGE_FILE_PATH
-    if [[ "$GLENT_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
+    if [[ "$OPA_CI_ENVIRONMENT_MANUAL_APPROVAL"  == "true" ]]; then
         echo "      when: manual" >> $STAGE_FILE_PATH
     fi
     echo "  stage: ${TARGET_ENV_NAME}-stage" >> $STAGE_FILE_PATH

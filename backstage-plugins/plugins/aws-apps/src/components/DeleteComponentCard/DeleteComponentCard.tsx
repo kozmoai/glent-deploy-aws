@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { AWSComponent, AWSComponentType, AWSEKSAppDeploymentEnvironment, AWSResourceDeploymentEnvironment, GenericAWSEnvironment } from "@aws/plugin-aws-apps-common-for-backstage";
@@ -12,14 +12,14 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { GLENTApi, glentApiRef } from '../../api';
+import { OPAApi, opaApiRef } from '../../api';
 import { APP_SUBTYPE } from "../../helpers/constants";
 import { sleep } from "../../helpers/util";
 import { useAsyncAwsApp } from "../../hooks/useAwsApp";
 
 const DeleteAppPanel = ({
   input: { awsComponent, entity, catalogApi, api }
-}: { input: { awsComponent: AWSComponent; entity: Entity; catalogApi: CatalogApi; api: GLENTApi } }) => {
+}: { input: { awsComponent: AWSComponent; entity: Entity; catalogApi: CatalogApi; api: OPAApi } }) => {
 
   const [disabled, setDisabled] = useState(false);
   const [spinning, setSpinning] = useState(false);
@@ -40,7 +40,7 @@ const DeleteAppPanel = ({
       gitHost,
       gitProject: gitRepo.split('/')[0],
       gitRepoName: gitRepo.split('/')[1],
-      gitAdminSecret: 'glent-admin-gitlab-secrets'
+      gitAdminSecret: 'opa-admin-gitlab-secrets'
     }).then(_results => {
       // console.log(_results);
       setDeleteResultMessage("Gitlab Repository deleted.")
@@ -97,7 +97,7 @@ const DeleteAppPanel = ({
 
     let k8sManifests = await api.getEKSAppManifests({
       envName: env.environment.name,
-      gitAdminSecret: 'glent-admin-gitlab-secrets',
+      gitAdminSecret: 'opa-admin-gitlab-secrets',
       platformSCMConfig: {
         host: awsComponent.gitHost,
         projectGroup: 'aws-app',
@@ -186,7 +186,7 @@ const DeleteAppPanel = ({
         gitHost,
         gitRepoName: gitRepo.split('/')[1],
         gitProjectGroup: gitRepo.split('/')[0],
-        gitAdminSecret: 'glent-admin-gitlab-secrets',
+        gitAdminSecret: 'opa-admin-gitlab-secrets',
         envName: env.environment.name
       }
       const results = api.deleteTFProvider(params);
@@ -369,7 +369,7 @@ export const DeleteComponentCard = () => {
   const awsAppLoadingStatus = useAsyncAwsApp();
   const { entity } = useEntity();
   const catalogApi = useApi(catalogApiRef);
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
 
   if (awsAppLoadingStatus.loading) {
     return <LinearProgress />

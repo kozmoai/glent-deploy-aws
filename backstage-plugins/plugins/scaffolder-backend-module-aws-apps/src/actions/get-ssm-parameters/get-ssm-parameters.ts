@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
@@ -10,7 +10,7 @@ import {
 } from '../../helpers/action-context';
 import { EnvironmentProvider, EnvironmentProviderConnection } from '../../types';
 
-const ID = 'glent:get-ssm-parameters';
+const ID = 'opa:get-ssm-parameters';
 
 const examples = [
   {
@@ -19,10 +19,10 @@ const examples = [
       steps: [
         {
           action: ID,
-          id: 'glentGetSsmParams',
+          id: 'opaGetSsmParams',
           name: 'Get parameter values',
           input: {
-            envProviders: "${{ steps['glentGetAwsEnvProviders'].output.envProviders }}",
+            envProviders: "${{ steps['opaGetAwsEnvProviders'].output.envProviders }}",
             paramKeys:
               - '/my/ssm/parameter'
           },

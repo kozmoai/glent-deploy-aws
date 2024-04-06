@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useEffect, useState } from 'react';
@@ -6,7 +6,7 @@ import { InfoCard, } from '@backstage/core-components';
 import { Button, IconButton, TableBody, TableCell, TableRow, Table, TableHead, CardContent, Grid } from '@material-ui/core';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useApi } from '@backstage/core-plugin-api';
-import { glentApiRef } from '../../api';
+import { opaApiRef } from '../../api';
 import { Alert, AlertTitle, Typography } from '@mui/material';
 import { AWSEnvironmentProviderRecord } from '@aws/plugin-aws-apps-common-for-backstage';
 import { CompoundEntityRef, Entity, EntityRelation, parseEntityRef } from '@backstage/catalog-model';
@@ -22,7 +22,7 @@ const AwsEnvironmentProviderCard = ({
 }: {
   input: { entity: Entity; catalog: CatalogApi };
 }) => {
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
 
   const [error, setError] = useState<{ isError: boolean; errorMsg: string | null }>({ isError: false, errorMsg: null });
   const [items, setItems] = useState<AWSEnvironmentProviderRecord[]>([]);
@@ -119,7 +119,7 @@ const AwsEnvironmentProviderCard = ({
       gitRepoName: entity.metadata.repoUrl?.toString().split('repo=')[1].toLowerCase() || "",
       provider: item,
       gitProjectGroup: 'aws-environments',
-      gitAdminSecret: 'glent-admin-gitlab-secrets',
+      gitAdminSecret: 'opa-admin-gitlab-secrets',
       envName: entity.metadata.name.toLowerCase(),
       action,
       backendParamsOverrides

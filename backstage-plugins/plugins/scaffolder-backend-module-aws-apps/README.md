@@ -1,5 +1,5 @@
 <!-- 
-Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: Apache-2.0 
 -->
 
@@ -61,7 +61,7 @@ Reference the plugin documentation to understand how to create and surface AWS E
 
 ### Get Environment Providers
 
-The `glent:get-env-providers` scaffolder action retreives AWS environment providers so that their configurations can be used by other template actions.  Refer to the `/create/actions` path of your Backstage instance for details on the returned output.
+The `opa:get-env-providers` scaffolder action retreives AWS environment providers so that their configurations can be used by other template actions.  Refer to the `/create/actions` path of your Backstage instance for details on the returned output.
 
 ```yaml
 # template.yaml
@@ -69,9 +69,9 @@ The `glent:get-env-providers` scaffolder action retreives AWS environment provid
 ...
   steps:
     ...
-    - id: glentGetAwsEnvProviders
+    - id: opaGetAwsEnvProviders
       name: Get AWS Environment Providers
-      action: glent:get-env-providers
+      action: opa:get-env-providers
       input:
         environmentRef: ${{ parameters.environment }}
     ...
@@ -80,7 +80,7 @@ The `glent:get-env-providers` scaffolder action retreives AWS environment provid
 
 ### Create AWS SecretsManager Secrets
 
-The `glent:create-secret` scaffolder action creates a new Secret in the [AWS Secrets Manager service](https://aws.amazon.com/secrets-manager/).  
+The `opa:create-secret` scaffolder action creates a new Secret in the [AWS Secrets Manager service](https://aws.amazon.com/secrets-manager/).  
 
 The template snippet below demonstrates this action in the `steps` section of a Backstage Software Template.  See the example in the plugin's [src/example/template.yaml][example_template] file to better understand the action in the context of a full template.
 
@@ -94,14 +94,14 @@ This action will generate a `awsSecretArn` output which can be referenced in sub
     ...
     - id: createSecretManager
       name: Creates a Secret
-      action: glent:create-secret
+      action: opa:create-secret
       input:
         # The name of the SecretsManager secret
         secretName: ${{ parameters.component_id | lower }}-gitlab-access-token
         # The AWS region where the secret will be created
-        region: ${{ steps['glentDeployECSBoilerplate'].output.region }}
+        region: ${{ steps['opaDeployECSBoilerplate'].output.region }}
         # The AWS account in which the secret will be created
-        accountId: ${{ steps['glentDeployECSBoilerplate'].output.account }}
+        accountId: ${{ steps['opaDeployECSBoilerplate'].output.account }}
         # a description of the secret
         description: "Gitlab repo access token"
         # AWS tags to apply to the Secret
@@ -114,7 +114,7 @@ This action will generate a `awsSecretArn` output which can be referenced in sub
 
 ### Create Gitlab Repo Access Token
 
-The `glent:createRepoAccessToken:gitlab` scaffolder action creates a [project access token][gitlab_pat] where access is restrited to a specific Gitlab repository.  
+The `opa:createRepoAccessToken:gitlab` scaffolder action creates a [project access token][gitlab_pat] where access is restrited to a specific Gitlab repository.  
 
 The template snippet below demonstrates this action in the `steps` section of a Backstage Software Template.  See the example in the plugin's [src/example/template.yaml][example_template] file to better understand the action in the context of a full template.
 
@@ -128,7 +128,7 @@ The template snippet below demonstrates this action in the `steps` section of a 
     # and store the access token in an AWS Secret
     - id: createRepoToken
       name: Create Repo Token
-      action: glent:createRepoAccessToken:gitlab
+      action: opa:createRepoAccessToken:gitlab
       input:
         # the url of the gitlab repository
         repoUrl: ${{ parameters.repoUrl }}
@@ -143,7 +143,7 @@ The template snippet below demonstrates this action in the `steps` section of a 
 
 ### Get Platform Metadata
 
-The `glent:get-platform-metadata` scaffolder action retrieves information about the platform and environment on which GLENT on AWS is running.  
+The `opa:get-platform-metadata` scaffolder action retrieves information about the platform and environment on which OPA on AWS is running.  
 
 The action will return the AWS region where the platform is running.  Future metadata is also planned.
 
@@ -153,17 +153,17 @@ The action will return the AWS region where the platform is running.  Future met
 ...
   steps:
     ...
-    # Get data about the GLENT on AWS platform
-    - id: glentGetPlatformInfo
-      name: Get GLENT platform information
-      action: glent:get-platform-metadata
+    # Get data about the OPA on AWS platform
+    - id: opaGetPlatformInfo
+      name: Get OPA platform information
+      action: opa:get-platform-metadata
     ...
 
 ```
 
 ### Get Platform Parameters
 
-The `glent:get-platform-parameters` scaffolder action retrieve AWS SSM parameter values for the GLENT on AWS platform so that their values can be used by other template actions.
+The `opa:get-platform-parameters` scaffolder action retrieve AWS SSM parameter values for the OPA on AWS platform so that their values can be used by other template actions.
 
 The action will return a `params` response as an object containing a map of SSM parameters.
 
@@ -173,10 +173,10 @@ The action will return a `params` response as an object containing a map of SSM 
 ...
   steps:
     ...
-    # Get data about the GLENT on AWS platform
-    - id: glentGetPlatformParams
+    # Get data about the OPA on AWS platform
+    - id: opaGetPlatformParams
       name: Get parameter values
-      action: glent:get-platform-parameters
+      action: opa:get-platform-parameters
       input:
         paramKeys:
           - '/my/ssm/parameter1'
@@ -194,7 +194,7 @@ The returned object for the example above:
 
 ### Get SSM Parameters
 
-The `glent:get-ssm-parameters` scaffolder action is very similar to the action above except that it will retrieve AWS SSM parameter values for each environment provider so that their configurations can be used by other template actions.  This action is often used in conjunction with the `glent:get-env-providers` action's response of an array of environment providers.
+The `opa:get-ssm-parameters` scaffolder action is very similar to the action above except that it will retrieve AWS SSM parameter values for each environment provider so that their configurations can be used by other template actions.  This action is often used in conjunction with the `opa:get-env-providers` action's response of an array of environment providers.
 
 The action will return a `params` response as an object containing a map of SSM parameters keyed off of the environment provider name.
 
@@ -204,15 +204,15 @@ The action will return a `params` response as an object containing a map of SSM 
 ...
   steps:
     ...
-    # Get data about the GLENT on AWS platform
-    - id: glentGetPlatformParams
+    # Get data about the OPA on AWS platform
+    - id: opaGetPlatformParams
       name: Get parameter values
-      action: glent:get-platform-parameters
+      action: opa:get-platform-parameters
       input:
         paramKeys:
           - '/my/ssm/parameter1'
           - '/my/ssm/parameter2'
-        envProviders: "${{ steps['glentGetAwsEnvProviders'].output.envProviders }}",
+        envProviders: "${{ steps['opaGetAwsEnvProviders'].output.envProviders }}",
     ...
 
 ```

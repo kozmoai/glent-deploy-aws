@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
 # This script searches an AWS account to find all S3 buckets that are dedicated
 # to the current application environment EXCEPT FOR buckets that include 

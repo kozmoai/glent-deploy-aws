@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { GetParameterCommand, SSMClient } from '@aws-sdk/client-ssm';
@@ -48,7 +48,7 @@ export async function getEnvironmentProviderConnectInfo(
 export async function getSSMParameterValue(region: string, creds: AwsCredentialIdentity, ssmPath: string, logger?: Logger): Promise<string> {
   const ssmClient = new SSMClient({
     region,
-    customUserAgent: 'glent-plugin',
+    customUserAgent: 'opa-plugin',
     credentials: creds,
   });
 
@@ -77,7 +77,7 @@ export async function getSSMParameterValue(region: string, creds: AwsCredentialI
 export async function getPlatformAccountSSMParameterValue(ssmPath: string, region?: string, logger?: Logger): Promise<string> {
   const ssmClient = new SSMClient({
     region,
-    customUserAgent: 'glent-plugin',
+    customUserAgent: 'opa-plugin',
   });
   const ssmResponse = await ssmClient.send(
     new GetParameterCommand({

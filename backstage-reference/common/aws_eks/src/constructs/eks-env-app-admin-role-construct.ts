@@ -2,10 +2,10 @@ import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { NagSuppressions } from "cdk-nag";
 import * as iam from "aws-cdk-lib/aws-iam";
-import { GLENTEnvironmentParams } from "../eks-input"
+import { OPAEnvironmentParams } from "../eks-input"
 
 export interface EKSAppAdminRoleConstructProps extends cdk.StackProps {
-  readonly glentEnv: GLENTEnvironmentParams;
+  readonly opaEnv: OPAEnvironmentParams;
   readonly eksClusterName: string;
 }
 
@@ -20,11 +20,11 @@ export class EKSAppAdminRoleConstruct extends Construct {
     /* eslint-disable @typescript-eslint/no-unused-vars */
     props = { ...defaultProps, ...props };
 
-    const envIdentifier = `${props.glentEnv.prefix.toLowerCase()}-${props.glentEnv.envName}`;
+    const envIdentifier = `${props.opaEnv.prefix.toLowerCase()}-${props.opaEnv.envName}`;
 
     // Create IAM role
     this.iamRole = new iam.Role(this, `${envIdentifier}-app-admin-role`, {
-      assumedBy: new iam.AccountPrincipal(props.glentEnv.awsAccount),
+      assumedBy: new iam.AccountPrincipal(props.opaEnv.awsAccount),
       // roleName: name, - let CDK generate the role name
       maxSessionDuration: cdk.Duration.seconds(43200),
     });
@@ -56,11 +56,11 @@ export class EKSAppAdminRoleConstruct extends Construct {
         ],
         effect: iam.Effect.ALLOW,
         resources: [
-          `arn:aws:eks:${props.glentEnv.awsRegion}:${props.glentEnv.awsAccount}:addon/${props.eksClusterName}/*/*`,
-          `arn:aws:eks:${props.glentEnv.awsRegion}:${props.glentEnv.awsAccount}:cluster/${props.eksClusterName}`,
-          `arn:aws:eks:${props.glentEnv.awsRegion}:${props.glentEnv.awsAccount}:fargateprofile/${props.eksClusterName}/*/*`,
-          `arn:aws:eks:${props.glentEnv.awsRegion}:${props.glentEnv.awsAccount}:identityproviderconfig/${props.eksClusterName}/*/*/*`,
-          `arn:aws:eks:${props.glentEnv.awsRegion}:${props.glentEnv.awsAccount}:nodegroup/${props.eksClusterName}/*/*`,
+          `arn:aws:eks:${props.opaEnv.awsRegion}:${props.opaEnv.awsAccount}:addon/${props.eksClusterName}/*/*`,
+          `arn:aws:eks:${props.opaEnv.awsRegion}:${props.opaEnv.awsAccount}:cluster/${props.eksClusterName}`,
+          `arn:aws:eks:${props.opaEnv.awsRegion}:${props.opaEnv.awsAccount}:fargateprofile/${props.eksClusterName}/*/*`,
+          `arn:aws:eks:${props.opaEnv.awsRegion}:${props.opaEnv.awsAccount}:identityproviderconfig/${props.eksClusterName}/*/*/*`,
+          `arn:aws:eks:${props.opaEnv.awsRegion}:${props.opaEnv.awsAccount}:nodegroup/${props.eksClusterName}/*/*`,
         ],
       })
     );

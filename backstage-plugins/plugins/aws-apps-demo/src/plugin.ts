@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createPlugin, createComponentExtension } from '@backstage/core-plugin-api';
@@ -26,17 +26,17 @@ export const AWSLogoIcon = awsAppsDemoPlugin.provide(
   }),
 );
 
-export const GLENTLogoFull = awsAppsDemoPlugin.provide(
+export const OPALogoFull = awsAppsDemoPlugin.provide(
   createComponentExtension({
-    name: 'GLENTLogoFull',
-    component: { lazy: () => import('./components/GLENTLogoFull').then(m => m.GLENTLogoFull) },
+    name: 'OPALogoFull',
+    component: { lazy: () => import('./components/OPALogoFull').then(m => m.OPALogoFull) },
   }),
 );
 
-export const GLENTLogoIcon = awsAppsDemoPlugin.provide(
+export const OPALogoIcon = awsAppsDemoPlugin.provide(
   createComponentExtension({
-    name: 'GLENTLogoIcon',
-    component: { lazy: () => import('./components/GLENTLogoIcon').then(m => m.GLENTLogoIcon) },
+    name: 'OPALogoIcon',
+    component: { lazy: () => import('./components/OPALogoIcon').then(m => m.OPALogoIcon) },
   }),
 );
 
@@ -70,11 +70,11 @@ export const AWSAppsHomePage = awsAppsDemoPlugin.provide(
   }),
 );
 
-export const GLENTHomePage = awsAppsDemoPlugin.provide(
+export const OPAHomePage = awsAppsDemoPlugin.provide(
   createComponentExtension({
     name: 'AWSAppsHomePage',
     component: {
-      lazy: () => import('./components/GLENTHomePage/GLENTHomePage').then(m => m.GLENTHomePage),
+      lazy: () => import('./components/OPAHomePage/OPAHomePage').then(m => m.OPAHomePage),
     },
   }),
 );

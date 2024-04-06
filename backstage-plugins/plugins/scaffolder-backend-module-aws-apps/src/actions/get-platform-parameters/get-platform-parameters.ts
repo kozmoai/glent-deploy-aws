@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
@@ -7,16 +7,16 @@ import {
   getPlatformAccountSSMParameterValue
 } from '../../helpers/action-context';
 import { Config } from '@backstage/config'
-const ID = 'glent:get-platform-parameters';
+const ID = 'opa:get-platform-parameters';
 
 const examples = [
   {
-    description: 'Retrieve AWS SSM parameter values for the GLENT on AWS platform so that their values can be used by other template actions',
+    description: 'Retrieve AWS SSM parameter values for the OPA on AWS platform so that their values can be used by other template actions',
     example: yaml.stringify({
       steps: [
         {
           action: ID,
-          id: 'glentGetPlatformParams',
+          id: 'opaGetPlatformParams',
           name: 'Get parameter values',
           input: {
             paramKeys:

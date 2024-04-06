@@ -10,5 +10,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: glent-namespace-viewer
+  name: opa-namespace-viewer
   apiGroup: rbac.authorization.k8s.io

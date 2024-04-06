@@ -1,4 +1,4 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import { AWSComponent, AWSProviderParams, AwsDeploymentEnvironments } from '@aws/plugin-aws-apps-common-for-backstage';
@@ -14,7 +14,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { glentApiRef } from '../../api';
+import { opaApiRef } from '../../api';
 import { ProviderType } from '../../helpers/constants';
 import { useAsyncAwsApp } from '../../hooks/useAwsApp';
 import { AwsEksEnvPromoDialog } from './AwsEksEnvPromoDialog';
@@ -35,7 +35,7 @@ const AppPromoCard = ({
   const [suggestedEksNamespace, setSuggestedEksNamespace] = useState("");
   const [suggestedIamRoleArn, setSuggestedIamRoleArn] = useState("");
 
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
   
   function getHighestLevelEnvironment(currentEnvironments: AwsDeploymentEnvironments) {
     let highestLevel = 1;
@@ -239,7 +239,7 @@ const AppPromoCard = ({
         gitHost: awsComponent.gitHost,
         gitJobID: 'create-subsequent-environment-ci-config',
         gitProjectGroup: 'aws-app',
-        gitAdminSecret: 'glent-admin-gitlab-secrets',
+        gitAdminSecret: 'opa-admin-gitlab-secrets',
         gitRepoName: awsComponent.gitRepo.split('/')[1],
         providersData: envProviders.providers
       };

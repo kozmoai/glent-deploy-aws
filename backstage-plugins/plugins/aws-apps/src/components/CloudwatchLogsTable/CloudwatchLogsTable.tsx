@@ -1,11 +1,11 @@
-// Copyright Wearekozmoai.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useEffect, useState } from 'react';
 import { EmptyState, LogViewer, TableColumn, Table } from '@backstage/core-components';
 import { makeStyles } from '@material-ui/core/styles';
 import { useApi } from '@backstage/core-plugin-api';
-import { glentApiRef } from '../../api';
+import { opaApiRef } from '../../api';
 import { formatWithTime } from '../../helpers/date-utils';
 
 import Button from '@mui/material/Button';
@@ -59,7 +59,7 @@ type LogGroupStreams = {
 const CloudwatchLogsTable = ({ input: { logGroupNames, stackName } }: { input: LogsTableInput }) => {
   const emptyLogStreams = [...logGroupNames.map(_ => [])];
   const classes = useStyles();
-  const api = useApi(glentApiRef);
+  const api = useApi(opaApiRef);
 
   const [logStreams, setLogStreams] = useState<Array<TableData[]>>(emptyLogStreams);
   const [open, setOpen] = useState(false);
