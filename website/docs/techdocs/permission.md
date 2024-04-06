@@ -63,7 +63,7 @@ With the groups defined, we can now review and modify the policy decision code t
 
 ## Restricting access to KOZMO audit logs
 
-KOZMO on AWS provides an example permission to control access to KOZMO application audit logs using the `readKozmoAppAuditPermission` permission definition (defined in the `@aws/plugin-aws-apps-common-for-backstage` plugin).  The code below is part of the `KozmoSamplePermissionPolicy.ts` permission policy.  
+KOZMO on AWS provides an example permission to control access to KOZMO application audit logs using the `readKozmoAppAuditPermission` permission definition (defined in the `@kozmoai/plugin-aws-apps-common-for-backstage` plugin).  The code below is part of the `KozmoSamplePermissionPolicy.ts` permission policy.  
 
 Additional permissions for KOZMO on AWS APIs may be provided in the future.  If there is a specific permission required,  [open an issue](https://github.com/kozmoai/kozmo-deploy-aws/issues) or [submit a pull request](https://github.com/kozmoai/kozmo-deploy-aws/pulls) for support.
 
