@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_kozmoai_kozmo_on_aws_website=self.webpackChunk_kozmoai_kozmo_on_aws_website||[]).push([[7256],{4061:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);
