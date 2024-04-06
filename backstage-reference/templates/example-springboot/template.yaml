@@ -93,7 +93,7 @@ spec:
     - id: createProviderPropsFiles
       each: ${{ steps['opaGetAwsEnvProviders'].output.envProviders }}
       name: Store environment provider parameters
-      action: roadiehq:utils:fs:write
+      action: kozmoai:utils:fs:write
       input:
         path: .awsdeployment/providers/${{ steps['opaGetAwsEnvProviders'].output.envName }}-${{ each.value.envProviderName}}.properties
         content: |

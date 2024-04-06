@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Installation
 
-Installing the Orchestrate Platforms and Applications (GLENT) on AWS solution will provide you with the complete reference implementation including authentication/authorization, a Backstage platform instance, source code management, and CI/CD pipelines. By following this guide you will:
+Installing the Orchestrate Platforms and Applications (KOZMO) on AWS solution will provide you with the complete reference implementation including authentication/authorization, a Backstage platform instance, source code management, and CI/CD pipelines. By following this guide you will:
 
-- Deploy the AWS infrastructure required to run GLENT on AWS
+- Deploy the AWS infrastructure required to run KOZMO on AWS
 - Deploy a GitLab source code management instance including provisioning of resources to run CI/CD pipelines
 - Configure authentication/authorization using Okta as the identity provider (Backstage supports [several other identity providers](https://backstage.io/docs/auth/))
 - Deploy a sample repository of example software templates to create apps, environments, and resources for AWS
@@ -36,7 +36,7 @@ The installation instructions documented here were tested using the following ve
 
 ### Solution Platform prerequisites
 
-Prior to installing the GLENT solution platform, you will need to ensure that the following items are configured and available:
+Prior to installing the KOZMO solution platform, you will need to ensure that the following items are configured and available:
 
 * **AWS Account ID and region** - The solution will be installed into an AWS account and region.  You will need the 12-digit account ID and must be able to log into the account with sufficient permissions to provision infrastructure resources.
 
@@ -88,9 +88,9 @@ Prior to installing the GLENT solution platform, you will need to ensure that th
       * Push a sample repository to GitLab
       * Build and deploy the Backstage image to AWS
 
-   - After the installation completes, the application will start up.  Open a browser and navigate to the 'GLENT on AWS' endpoint using the Route 53 hosted zone name that you configured (e.g. `https://${R53_HOSTED_ZONE_NAME}`). 
+   - After the installation completes, the application will start up.  Open a browser and navigate to the 'KOZMO on AWS' endpoint using the Route 53 hosted zone name that you configured (e.g. `https://${R53_HOSTED_ZONE_NAME}`). 
    - If any errors occur during installation, please review the `install_{datestamp}.log` file for details.
-   - a new secret manager's secret named `glent-admin-gitlab-secrets` contains the Gitlab admin's credentials for
+   - a new secret manager's secret named `kozmo-admin-gitlab-secrets` contains the Gitlab admin's credentials for
 
   
    
@@ -102,7 +102,7 @@ Prior to installing the GLENT solution platform, you will need to ensure that th
 <br/>
 
 **I want to use another source control that is not GitLab. How can i do that?**  
-> Backstage supports multiple source control providers which can be integrated through the Backstage config. GLENT uses GitLab for several usage scenarios which you will need to migrate to another source control provider:
+> Backstage supports multiple source control providers which can be integrated through the Backstage config. KOZMO uses GitLab for several usage scenarios which you will need to migrate to another source control provider:
 > 
 > 1. Storing application source code
 > 2. Storing template source code

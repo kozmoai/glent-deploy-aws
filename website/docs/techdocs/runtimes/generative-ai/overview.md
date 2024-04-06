@@ -6,7 +6,7 @@ sidebar_position: 1
 
 
 **What is it?**
-The Gen AI Software template is an AWS App that can be deployed on top of the AWS Gen AI Environment Provider. It is a sample implementation of how we can deploy applications with common Gen AI use cases via GLENT on AWS. The solution leverages RAG (Retrieval-Augmented Generation), an AI framework used to retrieve facts from an external knowledge base to ground large language models (LLMs), to create a Chatbot.
+The Gen AI Software template is an AWS App that can be deployed on top of the AWS Gen AI Environment Provider. It is a sample implementation of how we can deploy applications with common Gen AI use cases via KOZMO on AWS. The solution leverages RAG (Retrieval-Augmented Generation), an AI framework used to retrieve facts from an external knowledge base to ground large language models (LLMs), to create a Chatbot.
 
 **Why was it made?**
 With the rise of Generative AI, customers have become increasingly interested in how they can implement it into their own use cases.  For companies considering adopting an IDP, this software template provides a reference for how they can leverage an IDP to deploy modern AI solutions.  
@@ -18,7 +18,7 @@ This solution is primarily aimed at Data Scientists. This solution will deploy a
 
 The Gen AI Application Software Template will deploy the following resources:
 <p align="center">
-![glent_genai_architecture.png](/img/glent/providers/glent_genai_architecture.png)
+![kozmo_genai_architecture.png](/img/kozmo/providers/kozmo_genai_architecture.png)
 </p>
 The solution contains 3 main processes:
 

@@ -16,7 +16,7 @@ const carouselContent = (
   <Carousel.Item>
     <Carousel.Caption style={{minHeight:'120px'}}>
       <h4>AWS Control Tower Integration</h4>
-      <p>Allow GLENT on AWS in your organization to participate in account provisioning and customization.</p>
+      <p>Allow KOZMO on AWS in your organization to participate in account provisioning and customization.</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -65,22 +65,22 @@ const EnterpriseFeatureList: FeatureItem[] = [
   },
 ];
 
-const glentDescription : FeatureItem[] = [
+const kozmoDescription : FeatureItem[] = [
   {
-    title: 'GLENT on AWS',
+    title: 'KOZMO on AWS',
     Svg: require('@site/static/img/regulations.svg').default,
     noSVG:true,
     minHeight:'300px',
     customTextStyle:{fontSize:'24px', textAlign:'left', maxWidth:'65%', margin:'auto', minHeight:'275px'},
     description: (
       <>
-       <b>Orchestrate Platforms and Applications on AWS </b>is a reference implementation that ties together AWS services into an enterprise-ready offering. By abstracting AWS services, GLENT on AWS allows application developers to focus on what they do best – write application logic! <br/> <br/> Platform engineering teams can promote best practices at-scale, while providing a productive and pleasurable experience for non-cloud developers
+       <b>Orchestrate Platforms and Applications on AWS </b>is a reference implementation that ties together AWS services into an enterprise-ready offering. By abstracting AWS services, KOZMO on AWS allows application developers to focus on what they do best – write application logic! <br/> <br/> Platform engineering teams can promote best practices at-scale, while providing a productive and pleasurable experience for non-cloud developers
       </>
     ),
   },
 ]
 
-const glentCarousel : FeatureItem[] = [
+const kozmoCarousel : FeatureItem[] = [
   {
     title: 'Updates',
     Svg: require('@site/static/img/regulations.svg').default,
@@ -249,14 +249,14 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-const glentImageList : FeatureItem [] = [
+const kozmoImageList : FeatureItem [] = [
   {
     title: '',
     Svg: require('@site/static/img/dashboard.svg').default,
     noSVG: true,
     description: (
       <>
-       <span className="imageSubtitle">AWS Software catalog in a click of a button </span> <img width={'100%'} src="img/glent/glent-screenshot11.png"/>
+       <span className="imageSubtitle">AWS Software catalog in a click of a button </span> <img width={'100%'} src="img/kozmo/kozmo-screenshot11.png"/>
       </>
     ),
   },
@@ -266,7 +266,7 @@ const glentImageList : FeatureItem [] = [
     noSVG: true,
     description: (
       <>
-        <span className="imageSubtitle">Scale the use of AWS Services using templates</span> <img width={'100%'} src="img/glent/glent-screenshot22.png"/>
+        <span className="imageSubtitle">Scale the use of AWS Services using templates</span> <img width={'100%'} src="img/kozmo/kozmo-screenshot22.png"/>
       </>
     ),
   },
@@ -277,7 +277,7 @@ const glentImageList : FeatureItem [] = [
     noSVG: true,
     description: (
       <>
-      <span className="imageSubtitle">Manage your applications using a single interface </span> <img width={'100%'} src="img/glent/glent-screenshot33.png"/>
+      <span className="imageSubtitle">Manage your applications using a single interface </span> <img width={'100%'} src="img/kozmo/kozmo-screenshot33.png"/>
       </>
     ),
   },
@@ -286,7 +286,7 @@ const glentImageList : FeatureItem [] = [
 const FeatureRowList: FeatureGroup[] = [
   {
     direction: "ltr",
-    FeatureItems: glentCarousel,
+    FeatureItems: kozmoCarousel,
   },
   {
     direction: "ltr",
@@ -295,12 +295,12 @@ const FeatureRowList: FeatureGroup[] = [
 
   {
     direction: "ltr",
-    FeatureItems: glentDescription,
+    FeatureItems: kozmoDescription,
   },
 
   {
     direction: "ltr",
-    FeatureItems: glentImageList,
+    FeatureItems: kozmoImageList,
   },
   {
     direction: "ltr",

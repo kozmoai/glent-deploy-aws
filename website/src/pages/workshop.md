@@ -1,6 +1,6 @@
 # Workshop
 
-We can offer customers a hands-on workshop to get familiar with the GLENT on AWS platform.
+We can offer customers a hands-on workshop to get familiar with the KOZMO on AWS platform.
 
 For scheduling events please reach out to fsi-pace-pe@amazon.com
 
@@ -18,14 +18,14 @@ The workshop targets two key roles:
 
 ## Workshop Offering
 
-* Hands-on experience with GLENT on AWS
+* Hands-on experience with KOZMO on AWS
 * Conduct the workshop across multiple teams up to 30+ attendees at a time
-* Pre-configured platform environment so you can experience with GLENT on AWS - with no prior cloud experience needed
+* Pre-configured platform environment so you can experience with KOZMO on AWS - with no prior cloud experience needed
 * Bootstrap cloud development and test your application with your own code
 
 ## Workshop Content
 
-The workshop is an opportunity to learn about GLENT on AWS and some of it’s major capabilities. Participants of this workshop will assume the role of two personas (Platform Engineer and Application Developer) to deploy a runtime environment and application using the GLENT on AWS platform. Specifically participants will walk through the following steps:
+The workshop is an opportunity to learn about KOZMO on AWS and some of it’s major capabilities. Participants of this workshop will assume the role of two personas (Platform Engineer and Application Developer) to deploy a runtime environment and application using the KOZMO on AWS platform. Specifically participants will walk through the following steps:
 
 
 * Platform Engineers

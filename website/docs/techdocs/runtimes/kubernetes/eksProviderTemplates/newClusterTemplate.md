@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # New Cluster Template
 
-The "AWS EKS Environment Provider" template will create everything GLENT needs to provision an EKS runtime. This includes creating and configuring the EKS cluster. You can customize this template to best suit your standards or use it as a reference to create your own template from scratch. The template itself allows for the user to make choices with respect to infrastructure creation. 
+The "AWS EKS Environment Provider" template will create everything KOZMO needs to provision an EKS runtime. This includes creating and configuring the EKS cluster. You can customize this template to best suit your standards or use it as a reference to create your own template from scratch. The template itself allows for the user to make choices with respect to infrastructure creation. 
 
 #### Template Choice Examples
   * Create an EKS cluster that is made up of managed nodes or utilize a serverless approach with Fargate. 
@@ -14,16 +14,16 @@ The "AWS EKS Environment Provider" template will create everything GLENT needs t
 
 #### Screenshot of the AWS EKS Environment Provider Template:
 <p align="center">
-![eks_new_cluster.png](/img/glent/providers/eks_new_cluster.png)
+![eks_new_cluster.png](/img/kozmo/providers/eks_new_cluster.png)
 </p>
 
 ## AWS Infrastructure Created By This Template
 
-#### Standard GLENT Provider Components:
+#### Standard KOZMO Provider Components:
 - IAM Roles
-  - GLENT Operations Role
+  - KOZMO Operations Role
     * Has sufficient permissions to perform operations on the environment provider's resources
-  - GLENT Provisioning Role
+  - KOZMO Provisioning Role
     * Has sufficient permissions to provision the environment provider's resources
 - Audit Table
   * A dedicated DynamoDB table to capture the actions performed on the applications that are running on this environment provider.
@@ -56,13 +56,13 @@ The "AWS EKS Environment Provider" template will create everything GLENT needs t
   * A lambda function used for configuring and querying kubernetes cluster resources, including installing Helm charts
   * This function runs in the same VPC as the EKS cluster so that it can communicate with the kubernetes API server even if the API server is not exposed publicly
   * Used by Infrastructure as Code (IaC) that adds/updates resources on the EKS cluster
-    * For example, GLENT's EKS Environment Provider templates run CDK code to configure cluster resources
-  * GLENT uses this lambda function to update and query the EKS cluster instead of using direct calls to the API server
+    * For example, KOZMO's EKS Environment Provider templates run CDK code to configure cluster resources
+  * KOZMO uses this lambda function to update and query the EKS cluster instead of using direct calls to the API server
   * This function makes use of kubectl (by way of a [lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html)). The version of kubectl it uses must be compatible with the kubernetes cluster version. If you update your kubernetes cluster version, you should also update the kubectl lambda layer so that the kubectl client version matches your cluster.
   
-#### GLENT Uses of the Kubectl Lambda Function:
+#### KOZMO Uses of the Kubectl Lambda Function:
 <p align="center">
-![kubectl_lambda.png](/img/glent/providers/kubectl_lambda.png)
+![kubectl_lambda.png](/img/kozmo/providers/kubectl_lambda.png)
 </p>
 
 #### Kubernetes Components Created/Configured By This Template
@@ -73,12 +73,12 @@ The "AWS EKS Environment Provider" template will create everything GLENT needs t
   * Configured to forward pod logs to AWS Cloudwatch logs
 
   :::info
-  The GLENT UI has a Logs tab that can show an application's logs from a particular environment. If the cluster is not set up to have FluentBit (or a similar tool such as Fluentd) send application logs to CloudWatch, this functionality will not work.
+  The KOZMO UI has a Logs tab that can show an application's logs from a particular environment. If the cluster is not set up to have FluentBit (or a similar tool such as Fluentd) send application logs to CloudWatch, this functionality will not work.
   :::
 
 * ClusterRoleBinding
-  * This binds the principal that GLENT uses to administer the cluster ("glent-cluster-admin") to the ClusterRole that has cluster-wide admin permissions
+  * This binds the principal that KOZMO uses to administer the cluster ("kozmo-cluster-admin") to the ClusterRole that has cluster-wide admin permissions
 * ClusterRole for viewing/listing namespaces
-  * GLENT application operations make use of this ClusterRole
+  * KOZMO application operations make use of this ClusterRole
 * aws-auth ConfigMap settings
-  * The aws-auth ConfigMap is updated to configure a k8s principal for GLENT to use to perform cluster and application provisioning
+  * The aws-auth ConfigMap is updated to configure a k8s principal for KOZMO to use to perform cluster and application provisioning

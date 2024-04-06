@@ -104,7 +104,7 @@ catalog:
   locations:
     # AWS templates
     - type: url
-      target: https://${SSM_GITLAB_HOSTNAME}/glent-admin/backstage-reference/-/blob/main/templates/all-templates.yaml
+      target: https://${SSM_GITLAB_HOSTNAME}/kozmo-admin/backstage-reference/-/blob/main/templates/all-templates.yaml
       rules:
         - allow: [Location, Template]
   providers:
@@ -114,7 +114,7 @@ catalog:
         # userFilter: profile.department eq "engineering"
         # groupFilter: profile.name eq "Everyone"
     gitlab:
-      glent:
+      kozmo:
         host: ${SSM_GITLAB_HOSTNAME}
         branch: main
         fallbackBranch: main

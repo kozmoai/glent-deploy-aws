@@ -17,7 +17,7 @@ install: verify-env
 	@$(MAKE) backstage-install 2>&1 | tee -a $(LOGFILE)
 	@echo -e "\nBootstrapping CDK\n====================" 2>&1 | tee -a $(LOGFILE)
 	@$(MAKE) cdk-bootstrap 2>&1 | tee -a $(LOGFILE)
-	@echo -e "\nDeploying the GLENT platform\n====================" 2>&1 | tee -a $(LOGFILE)
+	@echo -e "\nDeploying the KOZMO platform\n====================" 2>&1 | tee -a $(LOGFILE)
 	@$(MAKE) deploy-platform 2>&1 | tee -a $(LOGFILE)
 	@echo -e "\nUpdating configuration with platform values\n====================" 2>&1 | tee -a $(LOGFILE)
 	@$(MAKE) set-gitlab-token-env-var 2>&1 | tee -a $(LOGFILE)
@@ -97,15 +97,15 @@ cdk-bootstrap:  ## Bootstrap the CDK in an AWS account
 	@. ./build-script/deploy-cdk-bootstrap.sh
 	@echo "Bootstrap Finished."
 
-##@ GLENT Infrastructure Tasks
+##@ KOZMO Infrastructure Tasks
 
 # Resolves all environment variables in template files, executes "cdk deploy" 
-# for the GLENTStack, then restores template files to their original content
+# for the KOZMOStack, then restores template files to their original content
 deploy-platform: ## Deploys the platform CDK stack
 	. ./build-script/deploy-platform.sh
 
 # Resolves all environment variables in template files, executes "cdk destroy"
-# for the GLENTStack stack, then restores template files to their original content
+# for the KOZMOStack stack, then restores template files to their original content
 destroy-platform:  ## Destroys the platform CDK stack	
 	. ./build-script/destroy-platform.sh
 

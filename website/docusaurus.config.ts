@@ -8,13 +8,13 @@ import rehypeKatex from 'rehype-katex';
 
 
 const config: Config = {
-  title: 'GLENT on AWS',
+  title: 'KOZMO on AWS',
   // tagline: 'Orchestrate Platforms and Applications',
   tagline: 'Fast, secure, and at-scale. A developer portal to meet your Enterprise needs.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://glentonaws.io',
+  url: 'https://kozmoonaws.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -62,15 +62,15 @@ const config: Config = {
 
   themeConfig: {
       // Replace with your project's social card
-    image: 'img/glent-logo.png',
+    image: 'img/kozmo-logo.png',
     navbar: {
-      // title: 'GLENT on AWS',
+      // title: 'KOZMO on AWS',
       hideOnScroll: false,
       logo: {
-        alt: 'GLENT on AWS Logo',
-        src: 'img/glent_white.svg',
-        srcDark: 'img/glent_dark.svg',
-        className: 'glent-nav-logo',
+        alt: 'KOZMO on AWS Logo',
+        src: 'img/kozmo_white.svg',
+        srcDark: 'img/kozmo_dark.svg',
+        className: 'kozmo-nav-logo',
         // width: 128,
         // height: 128,
       },
@@ -112,7 +112,7 @@ const config: Config = {
     },
     announcementBar: {
       content:
-      'GLENT on AWS 0.3 is now available.  Check it out and give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/kozmoai/kozmo-deploy-aws">GitHub</a>! ⭐️.  ',
+      'KOZMO on AWS 0.3 is now available.  Check it out and give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/kozmoai/kozmo-deploy-aws">GitHub</a>! ⭐️.  ',
       backgroundColor: '#ffffff',
       textColor: '#000000',
       isCloseable: true,
@@ -164,7 +164,7 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     zoom: {
-      selector: 'img:not(.glent-nav-logo)',
+      selector: 'img:not(.kozmo-nav-logo)',
       background: {
         light: 'rgb(255, 255, 255)',
         dark: 'rgb(50, 50, 50)'

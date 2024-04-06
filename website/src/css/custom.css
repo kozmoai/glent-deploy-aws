@@ -26,7 +26,7 @@
 
   --ifm-footer-link-hover-color: var(--ifm-color-white);
 
-  --ifm-image-portal: url("/img/glent_white.svg");
+  --ifm-image-portal: url("/img/kozmo_white.svg");
 }
 .theme-doc-sidebar-container {
   background-color: #ebebeb;
@@ -59,7 +59,7 @@
   --ifm-color-primary-lightest: #ced3e0;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
-  --ifm-image-portal: url("/img/squid_GLENT_text02.png");
+  --ifm-image-portal: url("/img/squid_KOZMO_text02.png");
 }
 
 .hero--primary {
@@ -166,7 +166,7 @@ font-size:12px;
 
 .bg-splash {
   position: absolute;
-  glentcity: 0.1;
+  kozmocity: 0.1;
   left: 0px;
   right: 0px;
   top: 50px;
@@ -183,7 +183,7 @@ font-size:12px;
 .bgimg {
   display: flex;
   background-image: var(--ifm-image-portal);
-  /* background-image: url( '/img/glent_white.svg' ); */
+  /* background-image: url( '/img/kozmo_white.svg' ); */
   background-position: center bottom;
   background-repeat: no-repeat;
   position: relative;
@@ -208,7 +208,7 @@ font-size:12px;
 
 /* GitHub header styling */
 .header-github-link:hover {
-  glentcity: 0.6;
+  kozmocity: 0.6;
 }
 
 .header-github-link:before {
@@ -322,8 +322,8 @@ control-next-icon {
   border: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  glentcity: 0.5;
-  transition: glentcity 0.6s ease;
+  kozmocity: 0.5;
+  transition: kozmocity 0.6s ease;
 } */
 /* .carousel-indicators {
   position: absolute;
@@ -342,7 +342,7 @@ control-next-icon {
   background-color: #000;
 }
 .carousel-indicators .active {
-  glentcity: 1;
+  kozmocity: 1;
 } */
 
   /* .carousel-indicators [data-bs-target] {
@@ -360,8 +360,8 @@ control-next-icon {
     border: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    glentcity: 0.5;
-    transition: glentcity 0.6s ease;
+    kozmocity: 0.5;
+    transition: kozmocity 0.6s ease;
   } */
 
 /* .carousel-control-next-icon {
@@ -398,8 +398,8 @@ control-next-icon {
   text-align: center;
   background: none;
   border: 0;
-  glentcity: 0.5;
-  transition: glentcity 0.15s ease;
+  kozmocity: 0.5;
+  transition: kozmocity 0.15s ease;
 }
 .carousel-control-next {
   right: 0;
@@ -431,6 +431,6 @@ control-next-icon {
   text-align: center;
   background: none;
   border: 0;
-  glentcity: 0.5;
-  transition: glentcity 0.15s ease;
+  kozmocity: 0.5;
+  transition: kozmocity 0.15s ease;
 }  */

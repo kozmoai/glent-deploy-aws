@@ -42,7 +42,7 @@ yarn --cwd packages/app add "@aws/plugin-aws-apps-demo-for-backstage@^0.2.0"
 
 Configure Backstage to use the plugins:
 
-- For more information regarding Okta plugin visit kozmoai Okta plugin, see [kozmoai documentation](https://github.com/kozmoai/roadie-backstage-plugins/tree/main/plugins/backend/catalog-backend-module-okta).
+- For more information regarding Okta plugin visit kozmoai Okta plugin, see [kozmoai documentation](https://github.com/kozmoai/kozmo-backstage-plugins/tree/main/plugins/backend/catalog-backend-module-okta).
 - For more information regarding ImmobiliareLabs GitLab plugins, see [ImmobiliareLabs documentation](https://github.com/immobiliare/backstage-plugin-gitlab).
 - See the README.md documentation for each of the AWS plugins:
   - [AWS apps backend plugin](/backstage/plugins/aws-apps-backend/README.md)
@@ -97,7 +97,7 @@ import { Router } from 'express';
 import type { PluginEnvironment } from '../types';
 + import { ScmIntegrations } from '@backstage/integration';
 + import {
-+   createGlentDeployBoilerplateAction,
++   createKozmoDeployBoilerplateAction,
 +   createRepoAccessTokenAction,
 +   createSecretAction,
 +   createS3BucketAction,
@@ -122,7 +122,7 @@ export default async function createPlugin(env: PluginEnvironment): Promise<Rout
 
 +  const actions = [
 +     ...builtInActions,
-+    createGlentDeployBoilerplateAction({ catalogClient }),
++    createKozmoDeployBoilerplateAction({ catalogClient }),
 +    createRepoAccessTokenAction({ integrations }),
 +    createS3BucketAction(),
 +    createSecretAction(),
@@ -200,12 +200,12 @@ const isCicdApplicable = (entity: Entity) => {
   return isGitlabAvailable(entity) || isGithubActionsAvailable(entity);
 };
 export const isServerlessRestApi = (entity: Entity): boolean => {
-  const subType = entity?.metadata?.annotations?.['aws.amazon.com/glent-component-subtype'];
+  const subType = entity?.metadata?.annotations?.['aws.amazon.com/kozmo-component-subtype'];
   return 'serverless-rest-api' === subType;
 };
 export const isLogsAvailable = (entity: Entity): boolean => {
-  return !!entity?.metadata?.annotations?.['aws.amazon.com/glent-task-log-group'] ||
-  'serverless-rest-api' === entity?.metadata?.annotations?.['aws.amazon.com/glent-component-subtype'];
+  return !!entity?.metadata?.annotations?.['aws.amazon.com/kozmo-task-log-group'] ||
+  'serverless-rest-api' === entity?.metadata?.annotations?.['aws.amazon.com/kozmo-component-subtype'];
 };
 
 // Add the GitLab CI/CD content to the entity page

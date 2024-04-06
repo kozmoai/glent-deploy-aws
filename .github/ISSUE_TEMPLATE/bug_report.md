@@ -13,7 +13,7 @@ If your request is for a new feature, please use the `Feature request` template.
 
 ## Versions
 
-- GLENT plugin versions [Required]:
+- KOZMO plugin versions [Required]:
 Output from `yarn list --cwd backstage --pattern aws-apps`
 
 ## Reproduction Code [Required]

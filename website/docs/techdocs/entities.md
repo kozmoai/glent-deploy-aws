@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Entities
 
-GLENT on AWS uses some Backstage out of the box entities but also introduces two new entities in the software catalog.
+KOZMO on AWS uses some Backstage out of the box entities but also introduces two new entities in the software catalog.
 
 ## AWS Environment & Environment Provider
 These custom Backstage entity kinds were created to represent an abstract AWS environment and environment provider. 
@@ -157,7 +157,7 @@ metadata:
     - aws
     - nodejs
   annotations:
-    aws.amazon.com/glent-repoSecretArn: "arn:aws:secretsmanager:us-east-1:**********.:secret:aws-apps-aml-detection-emea-access-token-V9w8Ea"
+    aws.amazon.com/kozmo-repoSecretArn: "arn:aws:secretsmanager:us-east-1:**********.:secret:aws-apps-aml-detection-emea-access-token-V9w8Ea"
   iacType: cdk
   repoSecretArn: "arn:aws:secretsmanager:us-east-1:**********.:secret:aws-apps-aml-detection-emea-access-token-V9w8Ea"
   appData:

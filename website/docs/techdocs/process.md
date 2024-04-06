@@ -13,7 +13,7 @@ The process described below is true for all templates with the exception of AWS 
 When a user selects a template in the catalog and clicks *Create*, the below process is initiated.
 ```mermaid
 flowchart LR;
-    subgraph Glent to GitLab
+    subgraph Kozmo to GitLab
     id(Template Creation)-->id2(Rendered Entity Data);
     id2(Rendered Entity Data)-->id3(Create Repository);
     id3(Create Repository)-->id4(Store initial files and pipeline);
@@ -49,10 +49,10 @@ stages:
 variables:
   APP_SHORT_NAME: "my-app"
   APP_TEMPLATE_NAME: "example-nodejs"
-  GLENT_PLATFORM_REGION: "us-east-1"
+  KOZMO_PLATFORM_REGION: "us-east-1"
 
 include:
-  - project: 'glent-admin/backstage-reference'
+  - project: 'kozmo-admin/backstage-reference'
     ref: main 
     file:
       - 'common/cicd/.gitlab-ci-job-defaults-cdk.yml'
@@ -117,7 +117,7 @@ The process to deploy an application to another environment is done by submittin
 :::
 
 ### Continuous deployment for app code
-How do the application logic code changes prglentgate to multiple environments?
+How do the application logic code changes prkozmogate to multiple environments?
 For example - if we have the below pattern of commit on our repository - every time we merge changes to the main branch /src directory (Can be configured differently) the ENV-XXX-stage will be triggered. 
 <br/>
 If we have several stages for multiple environments, all of them will be triggered in the original order they were created in.
@@ -142,6 +142,6 @@ gitGraph
 ```
 
 :::note
-If we configured the environment with *"Requires approval"*, the pipeline that pushes code changes will halt until an approval is granted. This is useful in cases where we want supervision of what changes are prglentgated to a sensitive environment. Additional security controls can also be implemented.
+If we configured the environment with *"Requires approval"*, the pipeline that pushes code changes will halt until an approval is granted. This is useful in cases where we want supervision of what changes are prkozmogated to a sensitive environment. Additional security controls can also be implemented.
 :::
 

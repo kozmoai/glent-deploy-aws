@@ -4,12 +4,12 @@ sidebar_position: 1
 
 # Intro
 
-## What is GLENT on AWS?
-Orchestrate Platforms and Applications (GLENT) on AWS brings the AWS cloud closer to your developers. The platform allows enterprise customers to build environments and applications on AWS without requiring application developers to upskill on cloud expertise. GLENT on AWS is a reference implementation for an enterprise-grade, fully integrated internal developer platform. It improves the workflow for application developers, with a secure and scalable experience for non-cloud developers.
+## What is KOZMO on AWS?
+Orchestrate Platforms and Applications (KOZMO) on AWS brings the AWS cloud closer to your developers. The platform allows enterprise customers to build environments and applications on AWS without requiring application developers to upskill on cloud expertise. KOZMO on AWS is a reference implementation for an enterprise-grade, fully integrated internal developer platform. It improves the workflow for application developers, with a secure and scalable experience for non-cloud developers.
 
-GLENT on AWS is built on a Cloud Native Computing Foundation (CNCF) project, [Backstage](https://backstage.io/), which is an open platform for building developer portals. The Backstage platform itself has been adopted by over 900 companies as their primary developer portal in the past 3 years and has over 100 plugins available for its end users. GLENT on AWS takes Backstage to the next level by seamlessly integrating it with AWS and packaging it together for enterprise use.
+KOZMO on AWS is built on a Cloud Native Computing Foundation (CNCF) project, [Backstage](https://backstage.io/), which is an open platform for building developer portals. The Backstage platform itself has been adopted by over 900 companies as their primary developer portal in the past 3 years and has over 100 plugins available for its end users. KOZMO on AWS takes Backstage to the next level by seamlessly integrating it with AWS and packaging it together for enterprise use.
 
-## Why did we build GLENT on AWS?
+## Why did we build KOZMO on AWS?
 
  Customers usually start their journey on AWS with small groups, which usually consist of highly skilled individuals who are well-versed in cloud technologies. However, scaling that experience is the true challenge. Providing a better developer experience can help customers in their cloud adoption journey.
 
@@ -19,9 +19,9 @@ The below image depicts how organizations have evolved from slow and manual proc
 <img width="100%" src="/img/docs/customer-journey.png"/>
 
 ## How does it work?
-GLENT on AWS provides the provisioning and operational layers to build applications quickly and security via a self-service internal developer portal. It leverages existing AWS Services like EKS and ECS so that users can enjoy the agility and scalability of these services.  It’s the best of both worlds - a customizable developer platform with the power and scale of AWS Services. To get you started quickly, we provide dozens of templates and patterns we have collected from different teams and customers. 
+KOZMO on AWS provides the provisioning and operational layers to build applications quickly and security via a self-service internal developer portal. It leverages existing AWS Services like EKS and ECS so that users can enjoy the agility and scalability of these services.  It’s the best of both worlds - a customizable developer platform with the power and scale of AWS Services. To get you started quickly, we provide dozens of templates and patterns we have collected from different teams and customers. 
 
-<img width="100%" src="/img/diagrams/glent-composite.png"/>
+<img width="100%" src="/img/diagrams/kozmo-composite.png"/>
 
 
 ## What's included?

@@ -22,7 +22,7 @@ In this tutorial, you will build out an Environment Provider and Environment for
 
 We're going to start with creating a new AWS Environment Provider.  
 
-In the default GLENT on AWS solution used by this tutorial, the Infrastructure as Code source and CI/CD pipelines responsible for provisioning infrastructure have already been created and reside in a GitLab reference repository.
+In the default KOZMO on AWS solution used by this tutorial, the Infrastructure as Code source and CI/CD pipelines responsible for provisioning infrastructure have already been created and reside in a GitLab reference repository.
 
 We'll use an **AWS ECS Environment Provider** template to provision our AWS Elastic Container Service (ECS) runtime environment. 
 
@@ -40,8 +40,8 @@ We'll use an **AWS ECS Environment Provider** template to provision our AWS Elas
 | **Description**          | `A Dev environment provider for containerized applications`                | Describes what the environment provider's purpose will be                                  |
 | **Owner**                | _Select a group from the drop-down list to own the Environment Provider_   | The group or user that will be responsible for the entity                                  |
 | **AWS Account Number**   | _Enter your 12-digit AWS account id_                                       | The AWS account where the environment provider will be created                             |
-| **AWS Region**           | _Select the same region where you have deployed the GLENT on AWS solution_   | The AWS region to provision resources in                                                   |
-| **Environment role arn** | _Enter the ARN of an IAM role with sufficient permission to deploy AWS infrastructure.  A sample role named `glent-envprovisioning-role` was created when deploying the GLENT on AWS solution.  The ARN format should be similar to `arn:aws:iam::{AWS_ACCOUNT_ID}:role/{IAM_ROLE_NAME}`_ | The IAM role to be used for provisioning AWS resources in the target account and region    |
+| **AWS Region**           | _Select the same region where you have deployed the KOZMO on AWS solution_   | The AWS region to provision resources in                                                   |
+| **Environment role arn** | _Enter the ARN of an IAM role with sufficient permission to deploy AWS infrastructure.  A sample role named `kozmo-envprovisioning-role` was created when deploying the KOZMO on AWS solution.  The ARN format should be similar to `arn:aws:iam::{AWS_ACCOUNT_ID}:role/{IAM_ROLE_NAME}`_ | The IAM role to be used for provisioning AWS resources in the target account and region    |
 | **CIDR**                 | 10.0.0.0/24 _(default)_                                                                                             | The CIDR block to be provisioned for the VPC associated with the ECS cluster to be created |
 
 <center><img src={EnvProviderForm2Img} width="50%" height="auto" /></center>
@@ -79,7 +79,7 @@ Now, let's proceed to the next step to create an environment using the environme
 
 To create an Environment Entity we will use the **AWS Environment** template from the software catalog section.
 
-**1.** On the GLENT on AWS website, navigate to the **Create..** menu. From the list of available templates, choose the **AWS Environment** template card.
+**1.** On the KOZMO on AWS website, navigate to the **Create..** menu. From the list of available templates, choose the **AWS Environment** template card.
 
 <center><img src={EnvForm1Img} width="70%" height="auto" /></center>
 

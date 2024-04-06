@@ -67,8 +67,8 @@ echo "Installing backend dependencies"
 yarn --cwd packages/backend add \
     "@backstage/plugin-catalog-backend-module-gitlab@^0.3.5" \
     "@backstage/plugin-permission-backend@^0.5.31" \
-    "@roadiehq/catalog-backend-module-okta@^0.9.3" \
-    "@roadiehq/scaffolder-backend-module-utils@^1.11.0" \
+    "@kozmoai/catalog-backend-module-okta@^0.9.3" \
+    "@kozmoai/scaffolder-backend-module-utils@^1.11.0" \
     "@immobiliarelabs/backstage-plugin-gitlab-backend@^6.4.0" \
     "@aws/plugin-aws-apps-backend-for-backstage@${AWS_APPS_BACKEND_VERSION}" \
     "@aws/plugin-scaffolder-backend-aws-apps-for-backstage@${AWS_APPS_SCAFFOLDER_VERSION}"

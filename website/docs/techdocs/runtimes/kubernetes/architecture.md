@@ -2,15 +2,15 @@
 sidebar_position: 2
 ---
 
-# GLENT EKS Architecture
+# KOZMO EKS Architecture
 
-To understand how GLENT [Environments](/docs/techdocs/entities#aws-environment) and [Environment Providers](/docs/techdocs/entities#aws-environment-provider) relate to applications and clusters, take a look at the below diagram.
+To understand how KOZMO [Environments](/docs/techdocs/entities#aws-environment) and [Environment Providers](/docs/techdocs/entities#aws-environment-provider) relate to applications and clusters, take a look at the below diagram.
 
 <p align="center">
-![glent_eks_architecture.png](/img/glent/providers/glent_eks_architecture.png)
+![kozmo_eks_architecture.png](/img/kozmo/providers/kozmo_eks_architecture.png)
 </p>
 
-This example diagram is meant to show that GLENT can work across AWS accounts and regions. GLENT allows you to create as many clusters as you want, but also to share the clusters between applications and application environments. The above configuration is just one way that you could set up your apps and clusters. GLENT gives you full flexibility on how many accounts, regions, clusters, and environments you want to use as well as which ones are used by which applications. The choice is yours on how many environments you create as well as their scope of use. For example, you can choose to create an Environment for each application or each team, or even for groups of applications. For a more in-depth explanation of GLENT environments, see our [GLENT environments video on YouTube ](https://www.youtube.com/watch?v=EgfIAPzIAHk&list=PLhr1KZpdzukcf5e7vYOVkpw4h-rzy7Pn3&index=4).
+This example diagram is meant to show that KOZMO can work across AWS accounts and regions. KOZMO allows you to create as many clusters as you want, but also to share the clusters between applications and application environments. The above configuration is just one way that you could set up your apps and clusters. KOZMO gives you full flexibility on how many accounts, regions, clusters, and environments you want to use as well as which ones are used by which applications. The choice is yours on how many environments you create as well as their scope of use. For example, you can choose to create an Environment for each application or each team, or even for groups of applications. For a more in-depth explanation of KOZMO environments, see our [KOZMO environments video on YouTube ](https://www.youtube.com/watch?v=EgfIAPzIAHk&list=PLhr1KZpdzukcf5e7vYOVkpw4h-rzy7Pn3&index=4).
 
 In the example above, we see an application, "App 1", that is deployed to 4 distinct Environments. The DEV and TEST Environments are for "non-production" use, and run in a non-prod AWS account. The STAGE and PROD Enviroments run on a production AWS account.
 

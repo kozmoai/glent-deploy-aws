@@ -9,17 +9,17 @@ sidebar_position: 2
 [![Introduction](https://img.youtube.com/vi/jP7zLghcFz8/hqdefault.jpg)](https://www.youtube.com/playlist?list=PLhr1KZpdzukcf5e7vYOVkpw4h-rzy7Pn3)
 
 ### Decks
-1. [GLENT on AWS - Part 1 - Introduction](/decks/GLENTonAWS-Part1-Introduction.pdf)
-2. [GLENT on AWS - Part 2 - Platform engineering](/decks/GLENTonAWS-Part2-PlatformEngineering.pdf)
-3. [GLENT on AWS - Part 3 - Application developer](/decks/GLENTonAWS-Part3-ApplicationDeveloper.pdf)
-4. [GLENT on AWS - Part 4 - Deploy Application to other environments](/decks/GLENTonAWS-Part4-DeployApplicationToOtherEnvironments.pdf)
-5. [GLENT on AWS - Part 5 - Provision AWS Resources and resource binding](/decks/GLENTonAWS-Part5-ProvisionAWSResourcesAndResourceBinding.pdf)
-6. [GLENT on AWS - Part 6 - Deploying Serverless APIs](/decks/GLENTonAWS-Part6-DeployingServerlessAPIs.pdf)
-7. [GLENT on AWS - Part 7 - GLENT Security and RBAC](/decks/GLENTonAWS-Part7-GLENTSecurityAndRBAC.pdf)
-8. [GLENT on AWS - Part 8 - Orchestrating and Managing CI-CD](/decks/GLENTonAWS-Part8-OrchestratingAndManagingCI-CD.pdf)
-9. [GLENT on AWS - Part 9 - Using Terraform to Orchestrate Applications](/decks/GLENTonAWS-Part9-UsingTerraformToOrchestrateApplications.pdf)
-10. [GLENT on AWS - Part 10 - Customizing your platform - Adding providers](/decks/GLENTonAWS-Part10-CustomizingYourPlatform-AddingProviders.pdf)
-11. [GLENT on AWS - Part 11 - Customizing your platform - Adding Templates](/decks/GLENTonAWS-Part11-CustomizingYourPlatform-AddingTemplates.pdf)
+1. [KOZMO on AWS - Part 1 - Introduction](/decks/KOZMOonAWS-Part1-Introduction.pdf)
+2. [KOZMO on AWS - Part 2 - Platform engineering](/decks/KOZMOonAWS-Part2-PlatformEngineering.pdf)
+3. [KOZMO on AWS - Part 3 - Application developer](/decks/KOZMOonAWS-Part3-ApplicationDeveloper.pdf)
+4. [KOZMO on AWS - Part 4 - Deploy Application to other environments](/decks/KOZMOonAWS-Part4-DeployApplicationToOtherEnvironments.pdf)
+5. [KOZMO on AWS - Part 5 - Provision AWS Resources and resource binding](/decks/KOZMOonAWS-Part5-ProvisionAWSResourcesAndResourceBinding.pdf)
+6. [KOZMO on AWS - Part 6 - Deploying Serverless APIs](/decks/KOZMOonAWS-Part6-DeployingServerlessAPIs.pdf)
+7. [KOZMO on AWS - Part 7 - KOZMO Security and RBAC](/decks/KOZMOonAWS-Part7-KOZMOSecurityAndRBAC.pdf)
+8. [KOZMO on AWS - Part 8 - Orchestrating and Managing CI-CD](/decks/KOZMOonAWS-Part8-OrchestratingAndManagingCI-CD.pdf)
+9. [KOZMO on AWS - Part 9 - Using Terraform to Orchestrate Applications](/decks/KOZMOonAWS-Part9-UsingTerraformToOrchestrateApplications.pdf)
+10. [KOZMO on AWS - Part 10 - Customizing your platform - Adding providers](/decks/KOZMOonAWS-Part10-CustomizingYourPlatform-AddingProviders.pdf)
+11. [KOZMO on AWS - Part 11 - Customizing your platform - Adding Templates](/decks/KOZMOonAWS-Part11-CustomizingYourPlatform-AddingTemplates.pdf)
 
 ## Individual videos
 
@@ -47,7 +47,7 @@ sidebar_position: 2
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9unAK0Xlc1k?si=cvZpfXzTEiXAI-_e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### GLENT Security and RBAC
+### KOZMO Security and RBAC
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9f-7f0ynrZQ?si=kS7XxeiLnc-fkcBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

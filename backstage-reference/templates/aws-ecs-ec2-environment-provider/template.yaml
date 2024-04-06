@@ -199,7 +199,7 @@ spec:
         url: "https://{{gitlab_hostname}}/opa-admin/backstage-reference/-/tree/main/environments/opa-common-constructs"
     - id: createYarnPackageFile
       name: Configure Yarn Package Manager
-      action: roadiehq:utils:fs:write
+      action: kozmoai:utils:fs:write
       input:
         path: ./.iac/package.json
         content: |
